@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0b"/>
+  <text x="600" y="280" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="#fafafa" text-anchor="middle">Habla</text>
+  <text x="600" y="360" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa" text-anchor="middle">API de Voz en Español</text>
+  <text x="600" y="420" font-family="system-ui, sans-serif" font-size="20" fill="#22c55e" text-anchor="middle">Speech-to-Speech · 100 min gratis</text>
+</svg>
