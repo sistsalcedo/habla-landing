@@ -162,20 +162,22 @@ landingpage_S2S/
 
 ## 🌐 Despliegue
 
-El proyecto es una SPA estática. Puedes desplegarla en:
+El proyecto es una SPA estática (solo frontend, sin backend). Puedes desplegarla en:
 
-- **Vercel** — `vercel` o conectando el repo
+- **Vercel** — conectando el repo (recomendado)
 - **Netlify** — arrastrando `dist/` o conectar repo
 - **GitHub Pages** — build y subir `dist/` (configurar base en Vite si usas subpath)
 
-Ejemplo con Vercel:
+### Vercel — configuración
 
-```bash
-npm run build
-vercel dist
-```
+| Campo | Valor |
+|-------|-------|
+| Root Directory | `./` (o vacío) |
+| Framework Preset | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
 
-O conecta el repositorio en [vercel.com](https://vercel.com) y configura el directorio raíz y comando de build.
+Conecta el repo en [vercel.com](https://vercel.com) y despliega. No requiere variables de entorno.
 
 ---
 
@@ -195,6 +197,7 @@ Ver `SEO-MARKETING.md` para checklist completo.
 ## 📄 Documentación relacionada
 
 - `AGENTS.md` — Guía para agentes de IA
+- `PRD.md` — Requisitos del producto
 - `SEO-MARKETING.md` — Checklist SEO y marketing
 - `docs_reference/AGENTS_nucleo.md` — Proyecto núcleo (API Habla)
 

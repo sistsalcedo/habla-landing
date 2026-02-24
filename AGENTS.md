@@ -10,6 +10,8 @@ Instrucciones para que agentes de IA (Cursor, Copilot, etc.) trabajen en este pr
 
 **Stack**: React 18 + Vite + Tailwind CSS + Framer Motion + React Router.
 
+**Arquitectura**: Solo frontend (SPA estática). Sin backend. Login, Registro, Contacto y Newsletter son solo UI. Para intranet real (login, admin, gestión de usuarios) hará falta backend o BaaS (Supabase, Auth0, etc.).
+
 **Relación con el proyecto núcleo**: Ver `docs_reference/AGENTS_nucleo.md` para la aplicación principal (API, WebSocket v1/v2). Este repositorio solo aloja la web de marketing.
 
 ---
@@ -32,6 +34,8 @@ Instrucciones para que agentes de IA (Cursor, Copilot, etc.) trabajen en este pr
 - `src/pages/` — HomePage, LoginPage, RegistroPage, DocumentacionPage, TerminosPage, PrivacidadPage, ContactoPage.
 - `src/components/` — Nav, Hero, TrustSignals, ProductCards, PricingCards, CodeBlock, Testimonials, CTASection, Footer.
 - `public/` — favicon.svg, og-image.svg, robots.txt, sitemap.xml.
+- `src/lib/supabase.js` — cliente Supabase.
+- `src/contexts/AuthContext.jsx` — provider de autenticación.
 - `tailwind.config.js` — Tema (colores, fuentes).
 - `SEO-MARKETING.md` — Checklist SEO/marketing y pendientes.
 
@@ -77,6 +81,7 @@ landingpage_S2S/
 ├── tailwind.config.js
 ├── package.json
 ├── SEO-MARKETING.md
+├── PRD.md
 └── AGENTS.md
 ```
 
@@ -125,13 +130,39 @@ landingpage_S2S/
 
 ---
 
+## Variables de entorno (landing)
+
+- `VITE_SUPABASE_URL` — URL del proyecto Supabase.
+- `VITE_SUPABASE_ANON_KEY` — Anon public key. Ver `.env.example`.
+
+En Vercel: añadir las mismas variables en Project Settings > Environment Variables.
+
+## Supabase – URL Configuration (Vercel)
+
+Tras desplegar en Vercel, en Supabase Auth > URL Configuration:
+- **Site URL**: `https://tu-app.vercel.app` (o tu dominio)
+- **Redirect URLs**: añadir `https://tu-app.vercel.app` y `https://tu-app.vercel.app/**`
+
 ## Pendientes (ver SEO-MARKETING.md)
 
 1. **Dominio**: Reemplazar `habla.io` por dominio real en index.html, public/, CodeBlock, Footer.
 2. **Analytics**: Descomentar GA4 en index.html y configurar ID.
 3. **Newsletter**: Conectar `handleNewsletterSubmit` en Footer con Resend/Mailchimp/etc.
-4. **Formularios**: Login, Registro, Contacto — solo UI; conectar con backend cuando exista.
+4. **Formularios**: Login y Registro conectados a Supabase Auth (Google OAuth + email/password); Contacto solo UI.
 5. **Testimonios**: Sustituir placeholders en Testimonials.jsx por reales.
+6. **Intranet (login/admin real)**: Requiere backend — ver PRD.md, sección «Backend futuro».
+
+---
+
+## Despliegue (Vercel)
+
+- **Root Directory**: `./` (o vacío) — todo está en la raíz.
+- **Framework Preset**: Vite (auto-detectado).
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Install Command**: `npm install` (por defecto)
+
+Conectar repo de GitHub en [vercel.com](https://vercel.com) y desplegar. No requiere variables de entorno para la landing estática.
 
 ---
 

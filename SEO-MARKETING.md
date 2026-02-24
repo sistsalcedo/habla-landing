@@ -34,3 +34,5 @@
 4. **og:image**: Algunas redes (Facebook, LinkedIn) prefieren PNG 1200×630. Si SVG no funciona, genera `og-image.png` y actualiza las meta og:image y twitter:image.
 
 5. **Testimonios**: Reemplazar el contenido en `src/components/Testimonials.jsx` con testimonios reales de clientes.
+
+6. **Intranet (login/admin)**: Si se requiere autenticación real o panel admin, ver `PRD.md` sección «Backend futuro» y `AGENTS.md`.

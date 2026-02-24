@@ -151,7 +151,15 @@
 - CTAs visibles y funcionales (enlaces a registro/login/contacto).
 - Estructura lista para conectar formularios y newsletter con backend externo.
 
-## 10. Referencias
+## 10. Backend futuro
+
+Cuando se implemente **login real**, **admin**, **gestión de usuarios** o intranet:
+
+- **Requerirá**: base de datos, lógica de autenticación, API (endpoints).
+- **Opciones**: Supabase (auth + PostgreSQL), Firebase Auth, Auth0, Clerk, o backend propio (Node/FastAPI) en Railway/Render.
+- La landing actual es **solo frontend**; el backend se despliega aparte (no en Vercel para la landing).
+
+## 11. Referencias
 
 - **Proyecto núcleo (API)**: `docs_reference/AGENTS_nucleo.md`
 - **Guía para agentes**: `AGENTS.md`
