@@ -7,7 +7,7 @@ const sections = [
     id: 'introduccion',
     icon: Book,
     title: 'Introducción',
-    content: 'Habla ofrece dos productos: Habla Push (REST, push-to-talk) y Habla Flow (WebSocket, conversación natural). Ambos usan la misma API key y comparten el mismo modelo de precios.',
+    content: 'Habla ofrece dos productos: Habla Push (REST, push-to-talk, acepta MP3, WAV y WebM) y Habla Flow (WebSocket, conversación natural). Ambos usan la misma API key y comparten el mismo modelo de precios.',
   },
   {
     id: 'autenticacion',
@@ -23,9 +23,9 @@ Authorization: Bearer YOUR_API_KEY`,
     id: 'v1-rest',
     icon: Server,
     title: 'Habla Push — REST (push-to-talk)',
-    content: 'Envía un archivo de audio completo y recibe el audio de respuesta.',
+    content: 'Envía un archivo de audio completo (MP3, WAV o WebM) y recibe el audio de respuesta.',
     code: `curl -X POST https://api.habla.io/api/speech \\
-  -F "file=@audio.webm" \\
+  -F "file=@audio.mp3" \\
   -H "Authorization: Bearer YOUR_API_KEY"`,
   },
   {
@@ -42,7 +42,7 @@ Authorization: Bearer YOUR_API_KEY`,
     id: 'formatos',
     icon: FileCode,
     title: 'Formatos de audio',
-    content: 'Habla Push acepta WebM (Opus). Habla Flow envía PCM 16 kHz mono, 16-bit. La respuesta es MP3.',
+    content: 'Habla Push acepta MP3, WAV y WebM. Habla Flow envía PCM 16 kHz mono, 16-bit. La respuesta es MP3.',
   },
 ]
 

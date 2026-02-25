@@ -32,7 +32,7 @@ const products = [
     popular: false,
     title: 'Habla Push — REST (push-to-talk)',
     description: 'Graba → Envía → Escucha. Ideal para comandos, dictado, formularios y entornos ruidosos. Coste optimizado por turno.',
-    features: ['Un ciclo por interacción', 'Menor coste por minuto', 'Ideal para kioscos, accesibilidad'],
+    features: ['Un ciclo por interacción', 'Acepta MP3, WAV y WebM', 'Ideal para kioscos, accesibilidad'],
     cta: 'Ver precios Habla Push',
     primary: false,
     Icon: Mic,

@@ -26,7 +26,7 @@ Este proyecto:
 **Relación con el proyecto núcleo (`assistant_STS` en Railway)**:
 
 - Este repo es solo **landing + dashboard ligero**.
-- El backend real que procesa audio (STT/TTS/LLM) vive en otro repo/proyecto: ver `docs_reference/AGENTS_nucleo.md`.
+- El backend real que procesa audio (STT/TTS/LLM) vive en otro repo/proyecto: ver `docs_reference/AGENTS_nucleoo.md`.
 - Ambos comparten la misma base de datos Supabase (tablas `habla_profiles` y `usage`) para perfiles y métricas.
 
 ---
@@ -107,7 +107,7 @@ landingpage_S2S/
 │   ├── main.jsx
 │   └── index.css
 ├── docs_reference/          # Referencia del proyecto núcleo
-│   ├── AGENTS_nucleo.md
+│   ├── AGENTS_nucleoo.md
 │   ├── CHAT_IA.txt
 │   └── PRD.md
 ├── index.html
@@ -215,54 +215,38 @@ Pasos recomendados:
 1. Revisar `SEO-MARKETING.md` para estado SEO y marketing.
 2. Si modificas rutas: actualizar `sitemap.xml` y enlaces en Nav/Footer.
 3. Si cambias el dominio: buscar `habla.io` en todo el proyecto.
-4. Para el producto API real: ver `docs_reference/AGENTS_nucleo.md` (proyecto separado, backend en Railway).
+4. Para el producto API real: ver `docs_reference/AGENTS_nucleoo.md` (proyecto separado, backend en Railway).
 
 ---
 
-## Relación con backend `assistant_STS` (Railway) y tareas pendientes
+## Relación con backend `assistant_STS` (Railway)
 
-El backend de la API Habla (proyecto `assistant_STS`, desplegado en Railway) es responsable de procesar audio y aplicar la lógica de negocio. La landing **no** llama directamente a Railway; ambos proyectos comparten Supabase como capa de datos.
+El backend de la API Habla (proyecto `assistant_STS`, desplegado en Railway) procesa audio (Habla Push REST + Habla Flow WebSocket) y está **vinculado con Supabase**. La landing **no** llama directamente a Railway; ambos proyectos comparten la misma base Supabase (`habla_profiles`, `usage`).
 
-### Qué ya existe en Supabase
+### Qué existe en Supabase (landing + backend)
 
-- Tabla `habla_profiles` (un perfil por `auth.users` + campos de plan, minutos incluidos, ciclo, `api_key_hash`).
-- Tabla `usage` (registro de minutos usados por perfil y producto `push` / `flow`).
-- Trigger que crea automáticamente un `habla_profiles` al registrarse un usuario en `auth.users`.
-- Edge Function `generate-api-key` que:
-  - Valida el JWT del usuario autenticado.
-  - Genera una API key `habla_...`, calcula su hash SHA-256 y lo guarda en `habla_profiles.api_key_hash`.
-  - Devuelve la API key en texto plano para mostrarla una sola vez en el Dashboard.
+- Tabla `habla_profiles` (un perfil por `auth.users` + plan, minutos incluidos, ciclo, `api_key_hash`).
+- Tabla `usage` (minutos usados por perfil y producto `push` / `flow`).
+- Trigger que crea un `habla_profiles` al registrarse un usuario en `auth.users`.
+- Edge Function `generate-api-key` (Supabase): genera/regenera API key y guarda `api_key_hash`.
 
-### Lo que debe hacer el backend `assistant_STS`
+### Qué hace el backend `assistant_STS` (ya implementado)
 
-1. **Validar API key en cada request a la API de voz**
-   - Leer la API key de `X-API-Key` o `Authorization: Bearer <API_KEY>`.
-   - Calcular el hash SHA-256 con el mismo algoritmo que la Edge Function.
-   - Buscar en `habla_profiles` la fila con ese `api_key_hash` usando `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (solo en servidor).
-   - Si no hay match → responder 401 (key inválida/expirada).
-   - Si hay match → obtener `profile_id`, `plan`, `minutos_incluidos`, `ciclo_desde` y usarlo para aplicar límites.
+El backend usa `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` en Railway. Ver `docs_reference/AGENTS_nucleoo.md` para detalles. Resumen:
 
-2. **Registrar uso de minutos**
-   - Tras procesar una petición (Push REST o Flow WebSocket), insertar una fila en `usage`:
-     - `profile_id` (de `habla_profiles`).
-     - `minutos` (o fracción equivalente según la unidad acordada).
-     - `producto` (`'push'` o `'flow'`).
-   - Este INSERT debe hacerse con la **service_role** (bypasa RLS), nunca con la anon key.
-   - El Dashboard de la landing ya está preparado para leer de `usage` y mostrar el uso por ciclo actual.
+1. **Validación de API key** — Si el cliente envía `X-API-Key` o `Authorization: Bearer <api_key>`, el backend valida contra `habla_profiles.api_key_hash` (hash SHA-256). Sin API key, se trata como demo sin límites.
 
-3. **Aplicar límites de plan (100 min/mes para free)**
-   - Antes de aceptar una petición, sumar el uso del ciclo actual (`usage` desde `ciclo_desde`) y compararlo con `minutos_incluidos`.
-   - Si se supera el límite del plan:
-     - O bien rechazar la petición (429/402) con mensaje claro.
-     - O bien permitirla pero marcarla para facturación adicional (según estrategia futura).
+2. **Registro de uso** — Tras procesar Push o Flow, inserta en `usage` (`profile_id`, `minutos`, `producto`). El Dashboard de la landing lee esta tabla y muestra el consumo del ciclo actual.
 
-4. **Futuro: Billing e integración con pasarela de pago**
-   - Integrar proveedor de pagos (Stripe / Culqi / Kushki, según decisión final).
-   - Sincronizar upgrades de plan y límites (`plan`, `minutos_incluidos`, `ciclo_desde`) con Supabase.
+3. **Límites de plan** — Se aplican cuotas de minutos según el plan del perfil (p. ej. 100 min/mes en free).
 
-> Nota para agentes: toda la lógica anterior vive en el repo del backend (`assistant_STS`). Este repo solo debe conocer:
-> - Cómo mostrar la API key y el uso que ya existen en Supabase.
-> - Cómo guiar al usuario hacia la documentación de la API y flujos de upgrade/pago una vez estén implementados en el backend.
+4. **Archivos relevantes en el backend** — `auth_dep.py`, `billing.py`, `supabase_client.py` (ver estructura en `AGENTS_nucleoo.md`).
+
+### Qué hace la landing (este repo)
+
+- Auth (login/registro) y dashboard con API key y uso.
+- Guiar al usuario a la documentación de la API y a los flujos de registro/upgrade.
+- No implementa lógica de billing ni validación de API key; eso vive en el backend.
 
 ---
 

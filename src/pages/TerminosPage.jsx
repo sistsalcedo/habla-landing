@@ -23,7 +23,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">2. Descripción del servicio</h2>
             <p>
-              Habla es una plataforma que ofrece una API (Interfaz de Programación de Aplicaciones) de Speech-to-Speech, permitiendo a los desarrolladores integrar reconocimiento de voz, generación de respuestas mediante inteligencia artificial y síntesis de voz en sus propias aplicaciones. El Servicio se ofrece en dos productos: Habla Push (REST, push-to-talk) y Habla Flow (WebSocket, conversación natural).
+              Habla es una plataforma que ofrece una API (Interfaz de Programación de Aplicaciones) de Speech-to-Speech, permitiendo a los desarrolladores integrar reconocimiento de voz, generación de respuestas mediante inteligencia artificial y síntesis de voz en sus propias aplicaciones. El Servicio se ofrece en dos productos: Habla Push (REST, push-to-talk, acepta MP3, WAV y WebM) y Habla Flow (WebSocket, conversación natural).
             </p>
           </section>
 

@@ -148,7 +148,7 @@ export default function PricingCards() {
           </motion.div>
 
           <motion.p variants={itemVariants} className="mt-12 text-center text-sm text-text-muted">
-            Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow.
+            Habla Push acepta MP3, WAV y WebM. Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow.
           </motion.p>
         </motion.div>
       </div>
