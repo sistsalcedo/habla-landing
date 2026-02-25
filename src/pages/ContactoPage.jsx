@@ -64,7 +64,7 @@ export default function ContactoPage() {
                 </div>
               </a>
               <p className="mt-4 text-sm text-text-muted">
-                Tiempo de respuesta habitual: 24-48 horas laborables.
+                Respondemos en menos de 24 horas laborables. SLA claro, soporte en español.
               </p>
             </div>
 

@@ -69,10 +69,10 @@ export default function PricingCards() {
           variants={containerVariants}
         >
           <motion.h2 variants={itemVariants} className="mb-2 text-3xl font-bold text-white md:text-4xl">
-            Precios simples
+            Precios simples y transparentes
           </motion.h2>
           <motion.p variants={itemVariants} className="mb-8 text-lg text-text-muted">
-            Paga solo por lo que uses. Sin sorpresas.
+            Paga solo por lo que uses. Sin sorpresas, sin créditos ocultos, sin costes ocultos. Facturación por minuto.
           </motion.p>
 
           <motion.div variants={itemVariants} className="mb-12 flex items-center justify-center gap-4 text-text-muted">
@@ -147,9 +147,14 @@ export default function PricingCards() {
             })}
           </motion.div>
 
-          <motion.p variants={itemVariants} className="mt-12 text-center text-sm text-text-muted">
-            Habla Push acepta MP3, WAV y WebM. Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow.
-          </motion.p>
+          <motion.div variants={itemVariants} className="mt-12 space-y-2">
+            <p className="text-center text-sm text-text-muted">
+              Habla Push acepta MP3, WAV y WebM. Minutos extra: <strong className="text-white">Push $0.04/min</strong> · <strong className="text-white">Flow $0.05/min</strong> · Sin cargos adicionales.
+            </p>
+            <p className="text-center text-xs text-text-muted">
+              Más transparente que Vapi, Retell y ElevenLabs — precio fijo por minuto, sin créditos ni facturación confusa.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>

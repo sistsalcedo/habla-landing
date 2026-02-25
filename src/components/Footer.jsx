@@ -10,8 +10,13 @@ function scrollToSection(e, href) {
 const footerLinks = {
   Producto: [
     { href: '#producto', label: 'Habla Push y Flow', external: false },
+    { href: '#casos-uso', label: 'Casos de uso', external: false },
     { href: '#precios', label: 'Precios', external: false },
     { href: '/documentacion', label: 'Documentación', external: true },
+  ],
+  Soporte: [
+    { href: '/faq', label: 'FAQ', external: true },
+    { href: '/contacto', label: 'Contacto', external: true },
   ],
   Legal: [
     { href: '/terminos', label: 'Términos', external: true },
@@ -80,13 +85,13 @@ export default function Footer() {
           </form>
         </div>
 
-        <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-12">
+        <div className="mb-12 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-12">
           <div className="md:col-span-5">
             <Link to="/" className="mb-4 block text-lg font-bold text-white no-underline">
               Habla
             </Link>
             <p className="text-[15px] text-text-muted">
-              API de voz en español para tu producto.
+              API de voz pensada para español y Latinoamérica.
             </p>
           </div>
           <div>
@@ -111,6 +116,18 @@ export default function Footer() {
                       {link.label}
                     </Link>
                   )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-white">Soporte</h4>
+            <ul className="list-none space-y-3">
+              {footerLinks.Soporte.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-text-muted no-underline transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -12,6 +12,7 @@ import DocumentacionPage from './pages/DocumentacionPage'
 import TerminosPage from './pages/TerminosPage'
 import PrivacidadPage from './pages/PrivacidadPage'
 import ContactoPage from './pages/ContactoPage'
+import FAQPage from './pages/FAQPage'
 import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
 import ResetearPage from './pages/ResetearPage'
 
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/terminos" element={<TerminosPage />} />
           <Route path="/privacidad" element={<PrivacidadPage />} />
           <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="/faq" element={<FAQPage />} />
         </Routes>
       </main>
       <Footer />

@@ -6,8 +6,10 @@ import { useAuth } from '../contexts/AuthContext'
 
 const navLinks = [
   { href: '#producto', label: 'Producto', isHash: true },
+  { href: '#casos-uso', label: 'Casos de uso', isHash: true },
   { href: '#precios', label: 'Precios', isHash: true },
   { href: '#api', label: 'API', isHash: true },
+  { href: '/faq', label: 'FAQ', isHash: false },
   { href: '/contacto', label: 'Contacto', isHash: false },
 ]
 
@@ -63,7 +65,7 @@ export default function Nav() {
                   </a>
                 ) : (
                   <Link
-                    to={`/${link.href}`}
+                    to={link.href.startsWith('#') ? `/${link.href}` : link.href}
                     className="text-text-muted no-underline transition-colors hover:text-white"
                   >
                     {link.label}

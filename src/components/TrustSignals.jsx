@@ -1,13 +1,28 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Shield, Zap, Code } from 'lucide-react'
+import { Shield, Zap, Code, Globe, MessageCircle, DollarSign } from 'lucide-react'
 
 const signals = [
+  {
+    Icon: Globe,
+    text: 'Español MX, CO, AR, PE',
+    sub: 'Acentos latinos soportados',
+  },
   {
     Icon: Zap,
     text: 'Latencia < 3s',
     sub: 'Pipeline optimizado',
+  },
+  {
+    Icon: DollarSign,
+    text: 'Precio transparente',
+    sub: 'Sin créditos ni costes ocultos',
+  },
+  {
+    Icon: MessageCircle,
+    text: 'Soporte en español',
+    sub: 'Respuesta < 24h laborables',
   },
   {
     Icon: Shield,
@@ -33,7 +48,7 @@ export default function TrustSignals() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-12 md:gap-16"
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-10"
         >
           <p className="text-sm font-medium text-text-muted">
             +100 desarrolladores ya integran Habla

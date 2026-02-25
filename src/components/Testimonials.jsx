@@ -7,19 +7,19 @@ const testimonials = [
   {
     quote: 'Integramos Habla en nuestra app de reservas en una tarde. La API es clara, la documentación excelente y el soporte en español marca la diferencia.',
     author: 'Carlos M.',
-    role: 'CTO, ReservaPro',
+    role: 'CTO, ReservaPro — México',
     avatar: null,
   },
   {
     quote: 'Habla Flow con conversación natural cambió la experiencia de nuestros usuarios. Latencia baja y la calidad de la voz en español es muy buena.',
     author: 'Ana G.',
-    role: 'Product Manager, HealthTech',
+    role: 'Product Manager, HealthTech — Colombia',
     avatar: null,
   },
   {
     quote: '100 minutos gratis para probar sin compromiso. Validamos la integración en un par de días antes de escalar al plan Pro.',
     author: 'Miguel R.',
-    role: 'Desarrollador freelance',
+    role: 'Desarrollador freelance — Perú',
     avatar: null,
   },
 ]
