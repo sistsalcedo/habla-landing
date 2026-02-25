@@ -5,19 +5,19 @@ import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    quote: 'Integramos Habla en nuestra app de reservas en una tarde. La API es clara y la documentación excelente.',
+    quote: 'Integramos Habla en nuestra app de reservas en una tarde. La API es clara, la documentación excelente y el soporte en español marca la diferencia.',
     author: 'Carlos M.',
-    role: 'CTO, startup SaaS',
+    role: 'CTO, ReservaPro',
     avatar: null,
   },
   {
-    quote: 'El modo v2 con conversación natural cambió la experiencia de nuestros usuarios. Latencia muy baja.',
+    quote: 'El modo v2 con conversación natural cambió la experiencia de nuestros usuarios. Latencia baja y la calidad de la voz en español es muy buena.',
     author: 'Ana G.',
-    role: 'Product Manager',
+    role: 'Product Manager, HealthTech',
     avatar: null,
   },
   {
-    quote: '100 minutos gratis para probar sin compromiso. Eso nos permitió validar antes de escalar.',
+    quote: '100 minutos gratis para probar sin compromiso. Validamos la integración en un par de días antes de escalar al plan Pro.',
     author: 'Miguel R.',
     role: 'Desarrollador freelance',
     avatar: null,

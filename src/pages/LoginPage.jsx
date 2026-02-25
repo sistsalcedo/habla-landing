@@ -123,7 +123,7 @@ export default function LoginPage() {
               <input type="checkbox" className="rounded border-border" />
               Recordarme
             </label>
-            <Link to="/contacto" className="text-accent hover:underline">¿Olvidaste la contraseña?</Link>
+            <Link to="/recuperar-contrasena" className="text-accent hover:underline">¿Olvidaste la contraseña?</Link>
           </div>
 
           <button

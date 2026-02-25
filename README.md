@@ -51,8 +51,11 @@ El proyecto es **independiente** del núcleo de la API (backend FastAPI + fronte
 | Ruta | Página |
 |------|--------|
 | `/` | Landing principal |
-| `/login` | Inicio de sesión (UI) |
-| `/registro` | Registro de cuenta (UI) |
+| `/login` | Inicio de sesión |
+| `/registro` | Registro de cuenta |
+| `/dashboard` | Panel (protegido): API key y uso |
+| `/recuperar-contrasena` | Recuperar contraseña |
+| `/resetear` | Nueva contraseña (tras link de email) |
 | `/documentacion` | Documentación de la API |
 | `/terminos` | Términos de servicio |
 | `/privacidad` | Política de privacidad |
@@ -183,14 +186,25 @@ Conecta el repo en [vercel.com](https://vercel.com) y despliega. No requiere var
 
 ## 🔧 Configuración previa al despliegue
 
-| Tarea | Archivo / Ubicación |
-|-------|---------------------|
-| Dominio | Reemplazar `habla.io` en `index.html`, `public/`, componentes |
-| Analytics | Descomentar GA4 en `index.html` y añadir Measurement ID |
-| Newsletter | Conectar `Footer.jsx` → Resend, Mailchimp, etc. |
-| Formularios | Login, Registro, Contacto → conectar con backend cuando exista |
+Copia `.env.example` a `.env` y completa las variables:
 
-Ver `SEO-MARKETING.md` para checklist completo.
+| Variable | Descripción |
+|----------|-------------|
+| `VITE_SUPABASE_URL` | URL del proyecto Supabase |
+| `VITE_SUPABASE_ANON_KEY` | Clave anónima de Supabase |
+| `VITE_FORMSPREE_NEWSLETTER_ID` | ID del formulario Formspree para newsletter |
+| `VITE_FORMSPREE_CONTACT_ID` | ID del formulario Formspree para contacto |
+| `VITE_GA_MEASUREMENT_ID` | ID de medición de Google Analytics 4 |
+
+### Supabase
+
+- **Auth**: Activa Email y Google OAuth en Authentication > Providers.
+- **Redirect URLs**: Añade `https://tu-dominio.com/resetear` y `http://localhost:5173/resetear` en Auth > URL Configuration.
+- **Edge Function**: Despliega `supabase/functions/generate-api-key` con `supabase functions deploy generate-api-key`.
+
+### Formspree
+
+Crea dos formularios en [formspree.io](https://formspree.io): uno para newsletter (campo `email`) y otro para contacto (campos `name`, `email`, `message`). Pega los IDs en las variables de entorno.
 
 ---
 

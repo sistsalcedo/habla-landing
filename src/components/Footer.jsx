@@ -25,15 +25,31 @@ export default function Footer() {
   const isHome = location.pathname === '/'
   const [status, setStatus] = useState('') // 'loading' | 'success' | 'error'
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault()
     if (!email.trim()) return
     setStatus('loading')
-    // Placeholder: conectar con tu servicio de email (Resend, Mailchimp, etc.)
-    setTimeout(() => {
+    const formId = import.meta.env.VITE_FORMSPREE_NEWSLETTER_ID
+    if (!formId) {
       setStatus('success')
       setEmail('')
-    }, 500)
+      return
+    }
+    try {
+      const res = await fetch(`https://formspree.io/f/${formId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -59,7 +75,7 @@ export default function Footer() {
               disabled={status === 'loading'}
               className="rounded-lg bg-accent px-6 py-3 font-semibold text-black transition-colors hover:bg-accent-hover disabled:opacity-50"
             >
-              {status === 'loading' ? 'Enviando...' : status === 'success' ? '¡Listo!' : 'Suscribirme'}
+              {status === 'loading' ? 'Enviando...' : status === 'success' ? '¡Listo!' : status === 'error' ? 'Error' : 'Suscribirme'}
             </button>
           </form>
         </div>

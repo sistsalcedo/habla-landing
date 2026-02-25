@@ -84,6 +84,9 @@ export default function Nav() {
         <div className="hidden items-center gap-4 md:flex">
           {isAuthenticated ? (
             <>
+              <Link to="/dashboard" className="text-sm font-semibold text-accent no-underline hover:underline">
+                Dashboard
+              </Link>
               <span className="truncate max-w-[140px] text-sm text-text-muted" title={user?.email}>
                 {user?.email}
               </span>
@@ -170,6 +173,9 @@ export default function Nav() {
             <li className="mt-4 flex flex-col gap-2">
               {isAuthenticated ? (
                 <>
+                  <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="rounded-lg bg-accent/20 px-4 py-2 text-center font-semibold text-accent no-underline">
+                    Dashboard
+                  </Link>
                   <span className="truncate px-4 py-2 text-center text-sm text-text-muted">{user?.email}</span>
                   <button
                     onClick={() => { handleSignOut() }}

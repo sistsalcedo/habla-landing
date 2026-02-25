@@ -13,8 +13,11 @@ const sections = [
     id: 'autenticacion',
     icon: Key,
     title: 'Autenticación',
-    content: 'Incluye tu API key en el header Authorization de todas las peticiones.',
-    code: `Authorization: Bearer YOUR_API_KEY`,
+    content: 'Obtén tu API key en el Dashboard tras registrarte. Inclúyela en el header X-API-Key o Authorization: Bearer en todas las peticiones.',
+    code: `X-API-Key: YOUR_API_KEY
+
+# O bien:
+Authorization: Bearer YOUR_API_KEY`,
   },
   {
     id: 'v1-rest',
@@ -92,17 +95,26 @@ export default function DocumentacionPage() {
             ))}
 
             <div className="rounded-xl border border-accent/30 bg-accent/5 p-6">
-              <h3 className="mb-2 font-semibold text-white">¿Necesitas ayuda?</h3>
+              <h3 className="mb-2 font-semibold text-white">Obtén tu API key</h3>
               <p className="mb-4 text-text-muted">
-                Contacta a hola@habla.io o consulta el dashboard cuando tengas cuenta.
+                Regístrate gratis y genera tu API key desde el Dashboard. También puedes contactar a hola@habla.io para planes Enterprise.
               </p>
-              <Link
-                to="/registro"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-black no-underline hover:bg-accent-hover"
-              >
-                Crear cuenta gratis
-                <Radio className="h-4 w-4" />
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/registro"
+                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-black no-underline hover:bg-accent-hover"
+                >
+                  Crear cuenta gratis
+                  <Radio className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/dashboard"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-semibold text-white no-underline transition-colors hover:bg-border"
+                >
+                  Ir al Dashboard
+                  <Key className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </motion.div>
         </main>

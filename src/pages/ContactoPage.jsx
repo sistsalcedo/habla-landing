@@ -8,16 +8,34 @@ export default function ContactoPage() {
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('loading')
-    // Placeholder: conectar con backend o servicio de email
-    setTimeout(() => {
+    const formId = import.meta.env.VITE_FORMSPREE_CONTACT_ID
+    if (!formId) {
       setStatus('success')
       setName('')
       setEmail('')
       setMessage('')
-    }, 500)
+      return
+    }
+    try {
+      const res = await fetch(`https://formspree.io/f/${formId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setName('')
+        setEmail('')
+        setMessage('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -98,7 +116,7 @@ export default function ContactoPage() {
                 disabled={status === 'loading'}
                 className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-3 font-semibold text-black transition-colors hover:bg-accent-hover disabled:opacity-50"
               >
-                {status === 'loading' ? 'Enviando...' : status === 'success' ? '¡Enviado!' : 'Enviar'}
+                {status === 'loading' ? 'Enviando...' : status === 'success' ? '¡Enviado!' : status === 'error' ? 'Error' : 'Enviar'}
                 <Send className="h-4 w-4" />
               </button>
             </form>
