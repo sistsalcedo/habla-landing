@@ -9,7 +9,7 @@ function scrollToSection(e, href) {
 
 const footerLinks = {
   Producto: [
-    { href: '#producto', label: 'v1 y v2', external: false },
+    { href: '#producto', label: 'Habla Push y Flow', external: false },
     { href: '#precios', label: 'Precios', external: false },
     { href: '/documentacion', label: 'Documentación', external: true },
   ],

@@ -11,7 +11,7 @@ const testimonials = [
     avatar: null,
   },
   {
-    quote: 'El modo v2 con conversación natural cambió la experiencia de nuestros usuarios. Latencia baja y la calidad de la voz en español es muy buena.',
+    quote: 'Habla Flow con conversación natural cambió la experiencia de nuestros usuarios. Latencia baja y la calidad de la voz en español es muy buena.',
     author: 'Ana G.',
     role: 'Product Manager, HealthTech',
     avatar: null,

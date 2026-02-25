@@ -7,7 +7,7 @@ const sections = [
     id: 'introduccion',
     icon: Book,
     title: 'Introducción',
-    content: 'Habla ofrece dos modos de integración: v1 (REST, push-to-talk) y v2 (WebSocket, conversación natural). Ambos usan la misma API key y comparten el mismo modelo de precios.',
+    content: 'Habla ofrece dos productos: Habla Push (REST, push-to-talk) y Habla Flow (WebSocket, conversación natural). Ambos usan la misma API key y comparten el mismo modelo de precios.',
   },
   {
     id: 'autenticacion',
@@ -22,7 +22,7 @@ Authorization: Bearer YOUR_API_KEY`,
   {
     id: 'v1-rest',
     icon: Server,
-    title: 'v1 — Push-to-talk (REST)',
+    title: 'Habla Push — REST (push-to-talk)',
     content: 'Envía un archivo de audio completo y recibe el audio de respuesta.',
     code: `curl -X POST https://api.habla.io/api/speech \\
   -F "file=@audio.webm" \\
@@ -31,7 +31,7 @@ Authorization: Bearer YOUR_API_KEY`,
   {
     id: 'v2-websocket',
     icon: Network,
-    title: 'v2 — Conversación (WebSocket)',
+    title: 'Habla Flow — Conversación (WebSocket)',
     content: 'Conecta por WebSocket para streaming bidireccional. Comandos JSON + audio PCM.',
     code: `wss://api.habla.io/ws/speech
 
@@ -42,7 +42,7 @@ Authorization: Bearer YOUR_API_KEY`,
     id: 'formatos',
     icon: FileCode,
     title: 'Formatos de audio',
-    content: 'v1 acepta WebM (Opus). v2 envía PCM 16 kHz mono, 16-bit. La respuesta es MP3.',
+    content: 'Habla Push acepta WebM (Opus). Habla Flow envía PCM 16 kHz mono, 16-bit. La respuesta es MP3.',
   },
 ]
 
@@ -75,7 +75,7 @@ export default function DocumentacionPage() {
                 Documentación API
               </h1>
               <p className="text-lg text-text-muted">
-                Guía para integrar Habla en tu aplicación. REST para v1, WebSocket para v2.
+                Guía para integrar Habla en tu aplicación con Habla Push (REST) y Habla Flow (WebSocket).
               </p>
             </div>
 

@@ -21,12 +21,12 @@ const itemVariants = {
   },
 }
 
-const code = `# v1 — Push-to-talk (POST)
+const code = `# Habla Push — REST (POST)
 curl -X POST https://api.habla.io/api/speech \\
   -F "file=@audio.webm" \\
   -H "Authorization: Bearer YOUR_API_KEY"
 
-# v2 — Conversación (WebSocket)
+# Habla Flow — Conversación (WebSocket)
 wss://api.habla.io/ws/speech
 # JSON: {"type": "start"|"stop"|"close"} + bytes PCM`
 
@@ -52,7 +52,7 @@ export default function CodeBlock() {
             Integra en minutos
           </motion.h2>
           <motion.p variants={itemVariants} className="mb-8 text-lg text-text-muted">
-            REST para v1, WebSocket para v2. Documentación OpenAPI.
+            Habla Push (REST) y Habla Flow (WebSocket). Documentación OpenAPI.
           </motion.p>
 
           <motion.div
@@ -68,7 +68,7 @@ export default function CodeBlock() {
             </button>
             <pre className="overflow-x-auto font-mono text-sm text-white">
               <code>
-                <span className="text-zinc-500"># v1 — Push-to-talk (POST)</span>
+                <span className="text-zinc-500"># Habla Push — REST (POST)</span>
                 {'\n'}
                 curl -X POST https://api.habla.io/api/speech \
                 {'\n'}
@@ -76,7 +76,7 @@ export default function CodeBlock() {
                 {'\n'}
                 {'  '}-H &quot;Authorization: Bearer YOUR_API_KEY&quot;
                 {'\n\n'}
-                <span className="text-zinc-500"># v2 — Conversación (WebSocket)</span>
+                <span className="text-zinc-500"># Habla Flow — Conversación (WebSocket)</span>
                 {'\n'}
                 wss://api.habla.io/ws/speech
                 {'\n'}

@@ -26,7 +26,7 @@ const plans = [
     name: 'Hobby',
     monthly: { price: 0, desc: '100 minutos incluidos' },
     annual: { price: 0, desc: '100 minutos incluidos' },
-    features: ['v1 y v2 disponibles', 'API key incluida', 'Soporte por email'],
+    features: ['Habla Push y Habla Flow incluidos', 'API key incluida', 'Soporte por email'],
     cta: 'Empezar gratis',
     ctaHref: '/registro',
     primary: false,
@@ -148,7 +148,7 @@ export default function PricingCards() {
           </motion.div>
 
           <motion.p variants={itemVariants} className="mt-12 text-center text-sm text-text-muted">
-            Los minutos extra se facturan a $0.04/min (v1) o $0.05/min (v2).
+            Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow.
           </motion.p>
         </motion.div>
       </div>
