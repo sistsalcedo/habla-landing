@@ -147,8 +147,8 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-white">Contacto</h4>
             <p className="text-[15px] text-text-muted">
-              <a href="mailto:hola@habla.io" className="text-text-muted no-underline hover:text-white">
-                hola@habla.io
+              <a href="mailto:hola@habla.cloud" className="text-text-muted no-underline hover:text-white">
+                hola@habla.cloud
               </a>
             </p>
             <Link to="/contacto" className="text-[15px] text-accent no-underline hover:underline">

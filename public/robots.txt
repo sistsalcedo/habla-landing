@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://habla.io/sitemap.xml
+Sitemap: https://habla.cloud/sitemap.xml

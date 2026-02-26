@@ -16,7 +16,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">1. Responsable del tratamiento</h2>
             <p>
-              Habla («nosotros», «nuestro») es el responsable del tratamiento de los datos personales que recopilamos a través de nuestro sitio web (habla.io), nuestra API y cualquier otro canal relacionado con la prestación del servicio.
+              Habla («nosotros», «nuestro») es el responsable del tratamiento de los datos personales que recopilamos a través de nuestro sitio web (habla.cloud), nuestra API y cualquier otro canal relacionado con la prestación del servicio.
             </p>
           </section>
 
@@ -63,7 +63,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">7. Tus derechos</h2>
             <p>
-              Puede ejercer los siguientes derechos: acceso a sus datos; rectificación si son inexactos; supresión («derecho al olvido»); limitación del tratamiento; oposición; portabilidad; y a no ser objeto de decisiones automatizadas. Para ejercerlos: <a href="mailto:hola@habla.io" className="text-accent hover:underline">hola@habla.io</a>. También tiene derecho a presentar una reclamación ante la autoridad de protección de datos competente.
+              Puede ejercer los siguientes derechos: acceso a sus datos; rectificación si son inexactos; supresión («derecho al olvido»); limitación del tratamiento; oposición; portabilidad; y a no ser objeto de decisiones automatizadas. Para ejercerlos: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>. También tiene derecho a presentar una reclamación ante la autoridad de protección de datos competente.
             </p>
           </section>
 
@@ -98,7 +98,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">12. Contacto</h2>
             <p>
-              Para ejercer derechos o consultas sobre privacidad: <a href="mailto:hola@habla.io" className="text-accent hover:underline">hola@habla.io</a>
+              Para ejercer derechos o consultas sobre privacidad: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>
             </p>
           </section>
         </div>

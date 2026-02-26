@@ -177,15 +177,15 @@ En Vercel: añadir las mismas variables en Project Settings > Environment Variab
 ## Supabase – URL Configuration (Vercel)
 
 Tras desplegar en Vercel, en Supabase Auth > URL Configuration:
-- **Site URL**: `https://habla-landing.vercel.app` (o tu dominio final).
+- **Site URL**: `https://habla.cloud` (dominio principal).
 - **Redirect URLs**: incluir al menos:
-  - `https://habla-landing.vercel.app/*`
-  - `https://habla-landing.vercel.app/resetear*` (reset contraseña)
-  - Cualquier dominio personalizado que se añada (mismas rutas).
+  - `https://habla.cloud/*`
+  - `https://habla.cloud/resetear*` (reset contraseña)
+  - `https://habla-landing.vercel.app/*` (fallback si se usa temporalmente)
 
 ## Pendientes (landing) – ver también `SEO-MARKETING.md`
 
-1. **Dominio**: Reemplazar `habla.io` por dominio real en index.html, `public/`, componentes y docs.
+1. ~~**Dominio**: Reemplazar `habla.io` por dominio real~~ ✅ Usando `habla.cloud`
 2. **Analytics**: Definir `VITE_GA_MEASUREMENT_ID` y revisar que `GoogleAnalytics` se cargue solo en producción.
 3. **Testimonios**: Sustituir placeholders en `Testimonials.jsx` por casos reales (o más creíbles).
 4. **Contenido de documentación**: Ampliar `DocumentacionPage.jsx` con endpoints reales (Push/Flow) y ejemplos actualizados del backend.
@@ -214,7 +214,7 @@ Pasos recomendados:
 
 1. Revisar `SEO-MARKETING.md` para estado SEO y marketing.
 2. Si modificas rutas: actualizar `sitemap.xml` y enlaces en Nav/Footer.
-3. Si cambias el dominio: buscar `habla.io` en todo el proyecto.
+3. Si cambias el dominio: buscar `habla.cloud` en todo el proyecto.
 4. Para el producto API real: ver `docs_reference/AGENTS_nucleoo.md` (proyecto separado, backend en Railway).
 
 ---

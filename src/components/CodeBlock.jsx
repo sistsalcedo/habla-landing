@@ -23,12 +23,12 @@ const itemVariants = {
 
 const code = `# Habla Push — REST (POST)
 # Acepta MP3, WAV o WebM
-curl -X POST https://api.habla.io/api/speech \\
+curl -X POST https://api.habla.cloud/api/speech \\
   -F "file=@audio.mp3" \\
   -H "Authorization: Bearer YOUR_API_KEY"
 
 # Habla Flow — Conversación (WebSocket)
-wss://api.habla.io/ws/speech
+wss://api.habla.cloud/ws/speech
 # JSON: {"type": "start"|"stop"|"close"} + bytes PCM`
 
 export default function CodeBlock() {
@@ -71,7 +71,7 @@ export default function CodeBlock() {
               <code>
                 <span className="text-zinc-500"># Habla Push — REST (POST). Acepta MP3, WAV o WebM</span>
                 {'\n'}
-                curl -X POST https://api.habla.io/api/speech \
+                curl -X POST https://api.habla.cloud/api/speech \
                 {'\n'}
                 {'  '}-F &quot;file=@audio.mp3&quot; \
                 {'\n'}
@@ -79,7 +79,7 @@ export default function CodeBlock() {
                 {'\n\n'}
                 <span className="text-zinc-500"># Habla Flow — Conversación (WebSocket)</span>
                 {'\n'}
-                wss://api.habla.io/ws/speech
+                wss://api.habla.cloud/ws/speech
                 {'\n'}
                 <span className="text-zinc-500"># JSON: {`{"type": "start"|"stop"|"close"} + bytes PCM`}</span>
               </code>

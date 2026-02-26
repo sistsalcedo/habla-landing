@@ -85,7 +85,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">10. Contacto</h2>
             <p>
-              Para consultas sobre estos términos: <a href="mailto:hola@habla.io" className="text-accent hover:underline">hola@habla.io</a>
+              Para consultas sobre estos términos: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>
             </p>
           </section>
         </div>

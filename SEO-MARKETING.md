@@ -20,12 +20,7 @@
 
 ## 📋 Pendiente / Configurar
 
-1. **Dominio**: Reemplazar `https://habla.io` por tu dominio real en:
-   - `index.html` (canonical, og:url, twitter:url, og:image, schema)
-   - `public/robots.txt` (Sitemap)
-   - `public/sitemap.xml` (loc)
-   - `src/components/CodeBlock.jsx` (api.habla.io)
-   - `src/components/Footer.jsx` (hola@habla.io)
+1. ~~**Dominio**: Reemplazar `https://habla.io` por dominio real~~ ✅ Usando `habla.cloud`
 
 2. **Google Analytics**: En `index.html`, descomentar el bloque y cambiar `G-XXXXXXXXXX` por tu Measurement ID.
 

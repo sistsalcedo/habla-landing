@@ -219,8 +219,8 @@ Crea dos formularios en [formspree.io](https://formspree.io): uno para newslette
 
 ## 📬 Contacto
 
-- **Email**: hola@habla.io
-- **Web**: [habla.io](https://habla.io) *(actualizar cuando exista dominio)*
+- **Email**: hola@habla.cloud
+- **Web**: [habla.cloud](https://habla.cloud)
 
 ---
 

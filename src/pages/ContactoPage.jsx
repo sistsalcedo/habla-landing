@@ -54,13 +54,13 @@ export default function ContactoPage() {
             <div>
               <h2 className="mb-4 text-lg font-semibold text-white">Formas de contactar</h2>
               <a
-                href="mailto:hola@habla.io"
+                href="mailto:hola@habla.cloud"
                 className="flex items-center gap-3 rounded-lg border border-border p-4 text-text-muted transition-colors hover:border-accent hover:text-white"
               >
                 <Mail className="h-5 w-5 text-accent" />
                 <div>
                   <p className="font-medium text-white">Email</p>
-                  <p>hola@habla.io</p>
+                  <p>hola@habla.cloud</p>
                 </div>
               </a>
               <p className="mt-4 text-sm text-text-muted">

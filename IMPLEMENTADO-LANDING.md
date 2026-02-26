@@ -95,6 +95,6 @@ Resumen de los cambios implementados según las estrategias de diferenciación f
 ## Pendiente (no incluido en esta implementación)
 
 - [ ] **Calculadora de costos**: Input minutos → estimación $/mes (solo JS, sin backend)
-- [ ] **Dominio**: Sustituir habla.io por dominio real (habla.cloud, etc.)
+- [x] **Dominio**: Usando habla.cloud
 - [ ] **Status page**: Enlace a status.habla.io cuando exista
 - [ ] **Testimonios reales**: Sustituir placeholders por testimonios de clientes reales

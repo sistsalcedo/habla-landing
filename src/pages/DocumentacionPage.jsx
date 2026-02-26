@@ -25,7 +25,7 @@ Authorization: Bearer YOUR_API_KEY`,
     icon: Server,
     title: 'Habla Push — REST (push-to-talk)',
     content: 'Envía un archivo de audio completo (MP3, WAV o WebM) y recibe el audio de respuesta.',
-    code: `curl -X POST https://api.habla.io/api/speech \\
+    code: `curl -X POST https://api.habla.cloud/api/speech \\
   -F "file=@audio.mp3" \\
   -H "Authorization: Bearer YOUR_API_KEY"`,
   },
@@ -34,7 +34,7 @@ Authorization: Bearer YOUR_API_KEY`,
     icon: Network,
     title: 'Habla Flow — Conversación (WebSocket)',
     content: 'Conecta por WebSocket para streaming bidireccional. Comandos JSON + audio PCM.',
-    code: `wss://api.habla.io/ws/speech
+    code: `wss://api.habla.cloud/ws/speech
 
 # Comandos: {"type": "start"|"stop"|"interrupt"|"close"}
 # Audio: bytes PCM 16 kHz mono`,
@@ -99,12 +99,12 @@ export default function DocumentacionPage() {
                 <li>Instala el cliente o usa cURL. Ejemplo Habla Push:</li>
               </ol>
               <pre className="mb-4 overflow-x-auto rounded-lg border border-border bg-[#09090b] p-4 font-mono text-sm text-white">
-                <code>{`curl -X POST https://api.habla.io/api/speech \\
+                <code>{`curl -X POST https://api.habla.cloud/api/speech \\
   -F "file=@audio.mp3" \\
   -H "Authorization: Bearer YOUR_API_KEY"`}</code>
               </pre>
               <p className="text-text-muted">
-                Para Habla Flow (WebSocket), conecta a <code className="rounded bg-border px-1">wss://api.habla.io/ws/speech</code> y envía audio PCM 16 kHz mono.
+                Para Habla Flow (WebSocket), conecta a <code className="rounded bg-border px-1">wss://api.habla.cloud/ws/speech</code> y envía audio PCM 16 kHz mono.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link to="/registro" className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-black no-underline hover:bg-accent-hover">
@@ -159,7 +159,7 @@ export default function DocumentacionPage() {
             <div className="rounded-xl border border-accent/30 bg-accent/5 p-6">
               <h3 className="mb-2 font-semibold text-white">Obtén tu API key</h3>
               <p className="mb-4 text-text-muted">
-                Regístrate gratis y genera tu API key desde el Dashboard. También puedes contactar a hola@habla.io para planes Enterprise.
+                Regístrate gratis y genera tu API key desde el Dashboard. También puedes contactar a hola@habla.cloud para planes Enterprise.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
