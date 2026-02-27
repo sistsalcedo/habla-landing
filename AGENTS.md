@@ -257,3 +257,14 @@ npm run dev      # Desarrollo (Vite, hot reload)
 npm run build    # Producción → dist/
 npm run preview  # Preview del build
 ```
+
+---
+
+## Cursor Cloud specific instructions
+
+- **Servicio único**: Solo se necesita el servidor Vite (`npm run dev`, puerto 3000). No hay backend local, base de datos ni Docker.
+- **Sin variables de entorno obligatorias**: La app arranca y renderiza toda la landing sin `.env`. El cliente Supabase en `src/lib/supabase.js` usa placeholders de fallback y muestra un warning en consola. Las funcionalidades de Auth/Dashboard degradan gracefully sin credenciales reales.
+- **Sin framework de tests**: No hay jest, vitest, playwright ni cypress configurados. `package.json` no tiene script `test`. La validación se hace con `npm run build` (verificación de compilación) y pruebas manuales en el navegador.
+- **Sin linter configurado**: No hay ESLint ni Prettier en el proyecto. La verificación de calidad de código se limita a que el build de Vite compile sin errores.
+- **Comandos de desarrollo**: ver sección "Comandos" más arriba — `npm run dev`, `npm run build`, `npm run preview`.
+- **Rutas para probar manualmente**: `/`, `/login`, `/registro`, `/contacto`, `/documentacion`, `/terminos`, `/privacidad`. El `/dashboard` redirige a `/login` sin sesión activa de Supabase.
