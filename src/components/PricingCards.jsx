@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Check } from 'lucide-react'
+import { useCurrency } from '../contexts/CurrencyContext'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -58,6 +59,7 @@ export default function PricingCards() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
   const [annual, setAnnual] = useState(false)
+  const { formatPrice, formatPricePerMin, isLocal } = useCurrency()
 
   return (
     <section id="precios" className="bg-bg-card px-6 py-20">
@@ -117,7 +119,7 @@ export default function PricingCards() {
                   )}
                   <h3 className="mb-2 text-xl font-semibold text-white">{plan.name}</h3>
                   <div className="mb-2 flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-white">${p.price}</span>
+                    <span className="text-4xl font-bold text-white">{formatPrice(p.price)}</span>
                     <span className="text-text-muted">/mes</span>
                   </div>
                   <p className="mb-6 text-sm text-text-muted">{p.desc}</p>
@@ -149,10 +151,11 @@ export default function PricingCards() {
 
           <motion.div variants={itemVariants} className="mt-12 space-y-2">
             <p className="text-center text-sm text-text-muted">
-              Habla Push acepta MP3, WAV y WebM. Minutos extra: <strong className="text-white">Push $0.04/min</strong> · <strong className="text-white">Flow $0.05/min</strong> · Sin cargos adicionales.
+              Habla Push acepta MP3, WAV y WebM. Minutos extra: <strong className="text-white">Push {formatPricePerMin(0.04)}</strong> · <strong className="text-white">Flow {formatPricePerMin(0.05)}</strong> · Sin cargos adicionales.
             </p>
             <p className="text-center text-xs text-text-muted">
               Más transparente que Vapi, Retell y ElevenLabs — precio fijo por minuto, sin créditos ni facturación confusa.
+              {isLocal && ' Tipo de cambio aproximado.'}
             </p>
           </motion.div>
         </motion.div>

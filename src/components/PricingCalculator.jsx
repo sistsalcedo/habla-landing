@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Calculator } from 'lucide-react'
+import { useCurrency } from '../contexts/CurrencyContext'
 
 const PUSH_RATE = 0.04
 const FLOW_RATE = 0.05
@@ -26,6 +27,7 @@ export default function PricingCalculator() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
   const [minutes, setMinutes] = useState(500)
   const [pushPercent, setPushPercent] = useState(50)
+  const { formatPrice, formatPricePerMin } = useCurrency()
 
   const { total, pushCost, flowCost, pushMin, flowMin } = estimateCost(minutes, pushPercent)
   const planSuggestion =
@@ -47,7 +49,7 @@ export default function PricingCalculator() {
             </h2>
           </div>
           <p className="mb-8 text-lg text-text-muted">
-            Estima tu facturación mensual según los minutos que uses. Precios por minuto: Push $0.04, Flow $0.05.
+            Estima tu facturación mensual según los minutos que uses. Precios por minuto: Push {formatPricePerMin(0.04)}, Flow {formatPricePerMin(0.05)}.
           </p>
 
           <div className="mx-auto max-w-xl rounded-xl border border-border bg-bg p-6">
@@ -90,15 +92,15 @@ export default function PricingCalculator() {
             <div className="space-y-3 rounded-lg bg-border/50 p-4">
               <div className="flex justify-between text-sm">
                 <span className="text-text-muted">Habla Push ({pushMin} min)</span>
-                <span className="text-white">${pushCost.toFixed(2)}</span>
+                <span className="text-white">{formatPrice(pushCost)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-text-muted">Habla Flow ({flowMin} min)</span>
-                <span className="text-white">${flowCost.toFixed(2)}</span>
+                <span className="text-white">{formatPrice(flowCost)}</span>
               </div>
               <div className="border-t border-border pt-3 flex justify-between font-semibold text-white">
                 <span>Total estimado/mes</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{formatPrice(total)}</span>
               </div>
             </div>
 

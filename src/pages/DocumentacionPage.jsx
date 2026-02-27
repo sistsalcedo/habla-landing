@@ -30,14 +30,107 @@ Authorization: Bearer YOUR_API_KEY`,
   -H "Authorization: Bearer YOUR_API_KEY"`,
   },
   {
+    id: 'ejemplo-python',
+    icon: Server,
+    title: 'Ejemplo Python (Habla Push)',
+    content: 'Usa la librería requests para enviar un archivo de audio y guardar la respuesta MP3.',
+    code: `import requests
+
+API_KEY = "YOUR_API_KEY"
+url = "https://api.habla.cloud/api/speech"
+
+with open("audio.mp3", "rb") as f:
+    response = requests.post(
+        url,
+        files={"file": ("audio.mp3", f, "audio/mpeg")},
+        headers={"Authorization": f"Bearer {API_KEY}"}
+    )
+
+if response.status_code == 200:
+    with open("respuesta.mp3", "wb") as out:
+        out.write(response.content)
+    print("Audio guardado en respuesta.mp3")
+else:
+    print(f"Error {response.status_code}:", response.text)`,
+  },
+  {
+    id: 'ejemplo-javascript',
+    icon: Server,
+    title: 'Ejemplo JavaScript (Habla Push)',
+    content: 'En navegador: usa fetch con FormData. En Node.js 18+: fetch nativo; para archivos usa form-data.',
+    code: `// Navegador (con input type="file")
+const formData = new FormData();
+formData.append("file", fileInput.files[0]);
+
+const response = await fetch("https://api.habla.cloud/api/speech", {
+  method: "POST",
+  headers: { "Authorization": "Bearer YOUR_API_KEY" },
+  body: formData
+});
+
+if (response.ok) {
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const audio = new Audio(url);
+  audio.play();
+} else {
+  console.error(await response.text());
+}
+
+// Node.js (con form-data: npm install form-data)
+import FormData from "form-data";
+import fs from "fs";
+
+const form = new FormData();
+form.append("file", fs.createReadStream("audio.mp3"));
+
+const res = await fetch("https://api.habla.cloud/api/speech", {
+  method: "POST",
+  headers: { "Authorization": "Bearer YOUR_API_KEY", ...form.getHeaders() },
+  body: form
+});
+const buffer = Buffer.from(await res.arrayBuffer());
+fs.writeFileSync("respuesta.mp3", buffer);`,
+  },
+  {
     id: 'v2-websocket',
     icon: Network,
     title: 'Habla Flow — Conversación (WebSocket)',
-    content: 'Conecta por WebSocket para streaming bidireccional. Comandos JSON + audio PCM.',
+    content: 'Conecta por WebSocket para streaming bidireccional. Envía comandos JSON y audio PCM 16 kHz mono, 16-bit.',
     code: `wss://api.habla.cloud/ws/speech
 
 # Comandos: {"type": "start"|"stop"|"interrupt"|"close"}
-# Audio: bytes PCM 16 kHz mono`,
+# Audio: bytes PCM 16 kHz mono, 16-bit`,
+  },
+  {
+    id: 'ejemplo-websocket-js',
+    icon: Network,
+    title: 'Ejemplo JavaScript (Habla Flow WebSocket)',
+    content: 'Conexión WebSocket básica. Envía comandos JSON y recibe audio MP3 en chunks.',
+    code: `const ws = new WebSocket("wss://api.habla.cloud/ws/speech?api_key=YOUR_API_KEY");
+
+ws.onopen = () => {
+  ws.send(JSON.stringify({ type: "start" }));
+};
+
+ws.onmessage = (event) => {
+  if (event.data instanceof Blob) {
+    // Audio MP3
+    const url = URL.createObjectURL(event.data);
+    new Audio(url).play();
+  } else {
+    const msg = JSON.parse(event.data);
+    if (msg.type === "audio") {
+      // Procesar chunk de audio
+    }
+  }
+};
+
+// Enviar audio PCM (16 kHz mono, 16-bit)
+ws.send(pcmBuffer);
+
+ws.onerror = (err) => console.error(err);
+ws.onclose = () => console.log("Conexión cerrada");`,
   },
   {
     id: 'formatos',

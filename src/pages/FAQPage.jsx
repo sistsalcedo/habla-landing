@@ -2,11 +2,12 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import { useCurrency } from '../contexts/CurrencyContext'
 
-const faqs = [
+const getFaqs = (formatPricePerMin) => [
   {
     q: '¿Cómo se factura el uso?',
-    a: 'Pagas por minuto de audio procesado. Los planes incluyen minutos incluidos (75 en Hobby, 500 en Starter, 2.500 en Pro). Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow. Sin créditos ni costes ocultos.',
+    a: `Pagas por minuto de audio procesado. Los planes incluyen minutos incluidos (75 en Hobby, 500 en Starter, 2.500 en Pro). Los minutos extra se facturan a ${formatPricePerMin(0.04)} en Habla Push y ${formatPricePerMin(0.05)} en Habla Flow. Sin créditos ni costes ocultos.`,
   },
   {
     q: '¿Funciona bien con acentos latinos?',
@@ -67,6 +68,9 @@ function FAQItem({ q, a, defaultOpen = false }) {
 }
 
 export default function FAQPage() {
+  const { formatPricePerMin } = useCurrency()
+  const faqs = getFaqs(formatPricePerMin)
+
   return (
     <div className="px-6 py-16">
       <div className="mx-auto max-w-2xl">

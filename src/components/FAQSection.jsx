@@ -3,11 +3,12 @@ import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
+import { useCurrency } from '../contexts/CurrencyContext'
 
-const faqs = [
+const getFaqs = (formatPricePerMin) => [
   {
     q: '¿Cómo se factura el uso?',
-    a: 'Pagas por minuto de audio procesado. Sin créditos ni costes ocultos. Minutos extra: Push $0.04/min, Flow $0.05/min.',
+    a: `Pagas por minuto de audio procesado. Sin créditos ni costes ocultos. Minutos extra: Push ${formatPricePerMin(0.04)}, Flow ${formatPricePerMin(0.05)}.`,
   },
   {
     q: '¿Funciona con acentos latinos?',
@@ -54,6 +55,8 @@ function FAQItem({ q, a, defaultOpen = false }) {
 export default function FAQSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const { formatPricePerMin } = useCurrency()
+  const faqs = getFaqs(formatPricePerMin)
 
   return (
     <section id="faq" className="border-y border-border bg-bg-card/30 px-6 py-20">
