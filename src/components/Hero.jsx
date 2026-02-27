@@ -78,13 +78,14 @@ export default function Hero() {
               </motion.span>
             </Link>
             <motion.a
-              href="#producto"
-              onClick={(e) => scrollToSection(e, '#producto')}
+              href={import.meta.env.VITE_DEMO_URL || 'https://demo.habla.cloud'}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="rounded-lg bg-transparent px-7 py-3.5 text-base font-semibold text-white no-underline transition-colors hover:bg-border"
             >
-              Ver cómo funciona
+              Ver demo
             </motion.a>
           </motion.div>
           <motion.p

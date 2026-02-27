@@ -6,12 +6,15 @@ import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import CurrencyToggle from './CurrencyToggle'
 
+const DEMO_URL = import.meta.env.VITE_DEMO_URL || 'https://demo.habla.cloud'
+
 const primaryLinks = [
   { href: '#producto', label: 'Producto', isHash: true },
   { href: '#precios', label: 'Precios', isHash: true },
   {
     label: 'Recursos',
     children: [
+      { href: DEMO_URL, label: 'Ver demo', isHash: false, external: true },
       { href: '/documentacion', label: 'Documentación', isHash: false },
       { href: '#api', label: 'API', isHash: true },
       { href: '#casos-uso', label: 'Casos de uso', isHash: true },
@@ -95,8 +98,19 @@ export default function Nav() {
                     className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-lg border border-border bg-bg py-1 shadow-xl"
                   >
                     {link.children.map((child) => (
-                      <li key={child.href} role="none">
-                        {child.isHash ? (
+                      <li key={child.label} role="none">
+                        {child.external ? (
+                          <a
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            role="menuitem"
+                            onClick={() => setRecursosOpen(false)}
+                            className="block px-4 py-2 text-sm text-text-muted no-underline transition-colors hover:bg-border/50 hover:text-white"
+                          >
+                            {child.label}
+                          </a>
+                        ) : child.isHash ? (
                           isHome ? (
                             <a
                               href={child.href}
@@ -264,8 +278,18 @@ export default function Nav() {
                     {link.label}
                   </li>
                   {link.children.map((child) => (
-                    <li key={child.href} className="pl-4">
-                      {child.isHash ? (
+                    <li key={child.label} className="pl-4">
+                      {child.external ? (
+                        <a
+                          href={child.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setMobileOpen(false)}
+                          className="block py-2 text-text-muted no-underline hover:text-white"
+                        >
+                          {child.label}
+                        </a>
+                      ) : child.isHash ? (
                         isHome ? (
                           <a
                             href={child.href}

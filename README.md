@@ -13,7 +13,7 @@
 **Landing de marketing** para promocionar la API **Habla**: convierte voz en respuestas con IA en español.  
 Habla Push (REST) · Habla Flow (WebSocket) · 75 min gratis · Integra en 5 minutos.
 
-[Ver demo](#) · [Documentación](#) · [Registrarse](#)
+[Ver demo](https://demo.habla.cloud) · [Documentación](/documentacion) · [Registrarse](/registro)
 
 ---
 

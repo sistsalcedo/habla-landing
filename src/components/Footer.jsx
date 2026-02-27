@@ -7,8 +7,11 @@ function scrollToSection(e, href) {
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+const DEMO_URL = import.meta.env.VITE_DEMO_URL || 'https://demo.habla.cloud'
+
 const footerLinks = {
   Producto: [
+    { href: DEMO_URL, label: 'Ver demo', external: true, isExternalUrl: true },
     { href: '#producto', label: 'Habla Push y Flow', external: false },
     { href: '#casos-uso', label: 'Casos de uso', external: false },
     { href: '#precios', label: 'Precios', external: false },
@@ -101,7 +104,16 @@ export default function Footer() {
             <ul className="list-none space-y-3">
               {footerLinks.Producto.map((link) => (
                 <li key={link.label}>
-                  {link.external ? (
+                  {link.isExternalUrl ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-muted no-underline transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.external ? (
                     <Link to={link.href} className="text-text-muted no-underline transition-colors hover:text-white">
                       {link.label}
                     </Link>
