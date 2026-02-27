@@ -11,7 +11,7 @@
 [![React Router](https://img.shields.io/badge/React_Router-7-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com)
 
 **Landing de marketing** para promocionar la API **Habla**: convierte voz en respuestas con IA en español.  
-Habla Push (REST) · Habla Flow (WebSocket) · 100 min gratis · Integra en 5 minutos.
+Habla Push (REST) · Habla Flow (WebSocket) · 75 min gratis · Integra en 5 minutos.
 
 [Ver demo](#) · [Documentación](#) · [Registrarse](#)
 

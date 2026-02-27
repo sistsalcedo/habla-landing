@@ -83,9 +83,10 @@ export default function DashboardPage() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const minutosIncluidos = profile?.minutos_incluidos ?? 100
+  const minutosIncluidos = profile?.minutos_incluidos ?? 75
   const minutosUsados = usage ?? 0
   const porcentaje = minutosIncluidos > 0 ? Math.min(100, (minutosUsados / minutosIncluidos) * 100) : 0
+  const limiteAlcanzado = minutosUsados >= minutosIncluidos && minutosIncluidos > 0
 
   return (
     <div className="px-6 py-16">
@@ -121,6 +122,19 @@ export default function DashboardPage() {
             <p className="mt-2 text-xs text-text-muted">
               Plan: {profile?.plan || 'free'}
             </p>
+            {limiteAlcanzado && (profile?.plan === 'free' || profile?.plan === 'hobby') && (
+              <div className="mt-4 rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">
+                <p className="text-sm text-amber-200">
+                  Has alcanzado el límite de 75 min/mes del plan Hobby. Actualiza a <strong>Starter</strong> para continuar usando la API sin límites en este ciclo.
+                </p>
+                <Link
+                  to="/#precios"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent no-underline hover:text-accent-hover"
+                >
+                  Ver plan Starter →
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* API Key */}

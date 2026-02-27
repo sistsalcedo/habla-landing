@@ -57,7 +57,7 @@ export default function RegistroPage() {
   }
 
   const benefits = [
-    '100 minutos gratis al mes',
+    '75 minutos gratis al mes',
     'API key inmediata',
     'Sin tarjeta de crédito',
   ]
@@ -98,7 +98,7 @@ export default function RegistroPage() {
       >
         <h1 className="mb-2 text-2xl font-bold text-white">Crear cuenta gratis</h1>
         <p className="mb-8 text-text-muted">
-          100 minutos al mes. Sin tarjeta de crédito.
+          75 minutos al mes. Sin tarjeta de crédito.
         </p>
 
         <div className="mb-6 flex flex-col gap-2">

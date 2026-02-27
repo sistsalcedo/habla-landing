@@ -51,7 +51,7 @@
 ### RF1. Página principal (Home)
 
 - Hero con headline, subtítulo y CTA.
-- Trust signals (ej. «100 min gratis», «Integra en 5 min»).
+- Trust signals (ej. «75 min gratis», «Integra en 5 min»).
 - Sección Producto: Habla Push y Habla Flow con descripción breve.
 - Sección Precios: planes con características y CTAs.
 - Bloque de código de ejemplo con sintaxis destacada.

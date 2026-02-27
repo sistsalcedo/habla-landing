@@ -17,7 +17,7 @@ const testimonials = [
     avatar: null,
   },
   {
-    quote: '100 minutos gratis para probar sin compromiso. Validamos la integración en un par de días antes de escalar al plan Pro.',
+    quote: '75 minutos gratis para probar sin compromiso. Validamos la integración en un par de días antes de escalar al plan Pro.',
     author: 'Miguel R.',
     role: 'Desarrollador freelance — Perú',
     avatar: null,

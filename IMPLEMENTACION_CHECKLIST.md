@@ -117,7 +117,7 @@ Lista de tareas con errores potenciales y mitigaciones.
 |-------|--------|------------------|------------|
 | Dependencia `get_current_profile` | | 401 en OPTIONS | CORS: permitir preflight sin auth |
 | WebSocket: API key en query param | | Key en logs | Evitar logging de query params con keys |
-| 429 con mensaje claro | | Cliente no parsea | Incluir `{"detail":"Límite de 100 min/mes alcanzado"}` en body |
+| 429 con mensaje claro | | Cliente no parsea | Incluir `{"detail":"Límite de 75 min/mes alcanzado"}` en body |
 
 ---
 

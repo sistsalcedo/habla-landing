@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.habla_profiles (
   supabase_user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   api_key_hash TEXT,
   plan TEXT NOT NULL DEFAULT 'free',
-  minutos_incluidos INTEGER NOT NULL DEFAULT 100,
+  minutos_incluidos INTEGER NOT NULL DEFAULT 75,
   ciclo_desde TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   UNIQUE(supabase_user_id)
@@ -57,7 +57,7 @@ SET search_path = public
 AS $$
 BEGIN
   INSERT INTO public.habla_profiles (supabase_user_id, plan, minutos_incluidos, ciclo_desde)
-  VALUES (NEW.id, 'free', 100, NOW());
+  VALUES (NEW.id, 'free', 75, NOW());
   RETURN NEW;
 END;
 $$;

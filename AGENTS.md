@@ -238,7 +238,7 @@ El backend usa `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` en Railway. Ver `doc
 
 2. **Registro de uso** — Tras procesar Push o Flow, inserta en `usage` (`profile_id`, `minutos`, `producto`). El Dashboard de la landing lee esta tabla y muestra el consumo del ciclo actual.
 
-3. **Límites de plan** — Se aplican cuotas de minutos según el plan del perfil (p. ej. 100 min/mes en free).
+3. **Límites de plan** — Se aplican cuotas de minutos según el plan del perfil (p. ej. 75 min/mes en Hobby (plan free)).
 
 4. **Archivos relevantes en el backend** — `auth_dep.py`, `billing.py`, `supabase_client.py` (ver estructura en `AGENTS_nucleoo.md`).
 
