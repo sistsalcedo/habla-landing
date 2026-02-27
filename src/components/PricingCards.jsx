@@ -24,8 +24,8 @@ const itemVariants = {
 const plans = [
   {
     name: 'Hobby',
-    monthly: { price: 0, desc: '100 minutos incluidos' },
-    annual: { price: 0, desc: '100 minutos incluidos' },
+    monthly: { price: 0, desc: '75 minutos incluidos' },
+    annual: { price: 0, desc: '75 minutos incluidos' },
     features: ['Habla Push y Habla Flow incluidos', 'API key incluida', 'Soporte por email'],
     cta: 'Empezar gratis',
     ctaHref: '/registro',

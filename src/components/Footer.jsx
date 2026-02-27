@@ -12,7 +12,9 @@ const footerLinks = {
     { href: '#producto', label: 'Habla Push y Flow', external: false },
     { href: '#casos-uso', label: 'Casos de uso', external: false },
     { href: '#precios', label: 'Precios', external: false },
+    { href: '#calculadora', label: 'Calculadora', external: false },
     { href: '/documentacion', label: 'Documentación', external: true },
+    { href: '/blog', label: 'Blog', external: true },
   ],
   Soporte: [
     { href: '/faq', label: 'FAQ', external: true },

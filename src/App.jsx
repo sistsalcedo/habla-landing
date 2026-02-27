@@ -13,6 +13,8 @@ import TerminosPage from './pages/TerminosPage'
 import PrivacidadPage from './pages/PrivacidadPage'
 import ContactoPage from './pages/ContactoPage'
 import FAQPage from './pages/FAQPage'
+import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
 import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
 import ResetearPage from './pages/ResetearPage'
 
@@ -35,6 +37,8 @@ export default function App() {
           <Route path="/privacidad" element={<PrivacidadPage />} />
           <Route path="/contacto" element={<ContactoPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
         </Routes>
       </main>
       <Footer />

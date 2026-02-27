@@ -37,6 +37,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://habla.cloud/blog</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://habla.cloud/faq</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>

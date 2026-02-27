@@ -57,6 +57,7 @@ El proyecto es **independiente** del núcleo de la API (backend FastAPI + fronte
 | `/recuperar-contrasena` | Recuperar contraseña |
 | `/resetear` | Nueva contraseña (tras link de email) |
 | `/documentacion` | Documentación de la API |
+| `/blog` | Blog (artículos y guías) |
 | `/terminos` | Términos de servicio |
 | `/privacidad` | Política de privacidad |
 | `/contacto` | Formulario de contacto |
@@ -193,7 +194,7 @@ Copia `.env.example` a `.env` y completa las variables:
 | `VITE_SUPABASE_ANON_KEY` | Clave anónima de Supabase |
 | `VITE_FORMSPREE_NEWSLETTER_ID` | ID del formulario Formspree para newsletter |
 | `VITE_FORMSPREE_CONTACT_ID` | ID del formulario Formspree para contacto |
-| `VITE_GA_MEASUREMENT_ID` | ID de medición de Google Analytics 4 |
+| `VITE_GA_MEASUREMENT_ID` | ID de medición de Google Analytics 4 (opcional; descomentar en .env) |
 
 ### Supabase
 

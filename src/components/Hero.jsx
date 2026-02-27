@@ -74,7 +74,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-block rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-black no-underline transition-colors hover:bg-accent-hover"
               >
-                Empezar gratis — 100 min/mes
+                Empezar gratis — 75 min/mes
               </motion.span>
             </Link>
             <motion.a

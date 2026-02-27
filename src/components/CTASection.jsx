@@ -20,7 +20,7 @@ export default function CTASection() {
             Prueba Habla hoy
           </h2>
           <p className="mb-6 text-text-muted">
-            100 minutos gratis al mes. Sin tarjeta de crédito. Cancela cuando quieras.
+            75 minutos gratis al mes. Sin tarjeta de crédito. Cancela cuando quieras.
           </p>
           <Link to="/registro">
             <motion.span

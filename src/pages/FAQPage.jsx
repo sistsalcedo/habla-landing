@@ -6,7 +6,7 @@ import { useState } from 'react'
 const faqs = [
   {
     q: '¿Cómo se factura el uso?',
-    a: 'Pagas por minuto de audio procesado. Los planes incluyen minutos incluidos (100 en Hobby, 500 en Starter, 2.500 en Pro). Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow. Sin créditos ni costes ocultos.',
+    a: 'Pagas por minuto de audio procesado. Los planes incluyen minutos incluidos (75 en Hobby, 500 en Starter, 2.500 en Pro). Los minutos extra se facturan a $0.04/min en Habla Push y $0.05/min en Habla Flow. Sin créditos ni costes ocultos.',
   },
   {
     q: '¿Funciona bien con acentos latinos?',
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: '¿Necesito tarjeta de crédito para empezar?',
-    a: 'No. Puedes registrarte y usar los 100 minutos gratuitos del plan Hobby sin tarjeta. Cuando quieras escalar, añades tu método de pago.',
+    a: 'No. Puedes registrarte y usar los 75 minutos gratuitos del plan Hobby sin tarjeta. Cuando quieras escalar, añades tu método de pago.',
   },
   {
     q: '¿Cuál es el tiempo de respuesta del soporte?',

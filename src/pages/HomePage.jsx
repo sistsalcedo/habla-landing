@@ -6,6 +6,8 @@ import ProductCards from '../components/ProductCards'
 import UseCasesSection from '../components/UseCasesSection'
 import ComparisonSection from '../components/ComparisonSection'
 import PricingCards from '../components/PricingCards'
+import PricingCalculator from '../components/PricingCalculator'
+import GettingStartedSteps from '../components/GettingStartedSteps'
 import CodeBlock from '../components/CodeBlock'
 import Testimonials from '../components/Testimonials'
 import FAQSection from '../components/FAQSection'
@@ -29,6 +31,8 @@ export default function HomePage() {
       <UseCasesSection />
       <ComparisonSection />
       <PricingCards />
+      <PricingCalculator />
+      <GettingStartedSteps />
       <CodeBlock />
       <Testimonials />
       <FAQSection />
