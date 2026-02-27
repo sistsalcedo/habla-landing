@@ -12,9 +12,10 @@ const primaryLinks = [
   {
     label: 'Recursos',
     children: [
+      { href: '/documentacion', label: 'Documentación', isHash: false },
+      { href: '#api', label: 'API', isHash: true },
       { href: '#casos-uso', label: 'Casos de uso', isHash: true },
       { href: '#calculadora', label: 'Calculadora', isHash: true },
-      { href: '#api', label: 'API', isHash: true },
       { href: '/blog', label: 'Blog', isHash: false },
       { href: '/faq', label: 'FAQ', isHash: false },
     ],
