@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Key, Copy, RefreshCw, BarChart3 } from 'lucide-react'
+import { Key, Copy, RefreshCw, BarChart3, Settings2, ChevronDown, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { supabase } from '../lib/supabase'
 
@@ -24,7 +24,8 @@ async function generateApiKey(regenerate = false) {
 }
 
 export default function DashboardPage() {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
+  const navigate = useNavigate()
   const [apiKey, setApiKey] = useState(null)
   const [apiKeyMessage, setApiKeyMessage] = useState('')
   const [loading, setLoading] = useState(false)
@@ -32,6 +33,9 @@ export default function DashboardPage() {
   const [copied, setCopied] = useState(false)
   const [profile, setProfile] = useState(null)
   const [usage, setUsage] = useState(null)
+  const [cuentaOpen, setCuentaOpen] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [cuentaLoading, setCuentaLoading] = useState(false)
 
   useEffect(() => {
     async function loadProfileAndUsage() {
@@ -119,19 +123,31 @@ export default function DashboardPage() {
                 className="h-full rounded-full bg-accent"
               />
             </div>
-            <p className="mt-2 text-xs text-text-muted">
-              Plan: {profile?.plan || 'free'}
-            </p>
-            {limiteAlcanzado && (profile?.plan === 'free' || profile?.plan === 'hobby') && (
-              <div className="mt-4 rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">
-                <p className="text-sm text-amber-200">
-                  Has alcanzado el límite de 75 min/mes del plan Hobby. Actualiza a <strong>Starter</strong> para continuar usando la API sin límites en este ciclo.
-                </p>
+            <div className="mt-2 flex items-center justify-between">
+              <p className="text-xs text-text-muted">
+                Plan: {profile?.plan || 'free'}
+              </p>
+              {(profile?.plan === 'free' || profile?.plan === 'hobby') && (
                 <Link
                   to="/#precios"
+                  className="text-xs font-medium text-accent hover:text-accent-hover hover:underline"
+                >
+                  Subir de plan
+                </Link>
+              )}
+            </div>
+            {(limiteAlcanzado || porcentaje >= 60) && (profile?.plan === 'free' || profile?.plan === 'hobby') && (
+              <div className="mt-4 rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">
+                <p className="text-sm text-amber-200">
+                  {limiteAlcanzado
+                    ? 'Has alcanzado el límite de 75 min/mes del plan Hobby. Actualiza a Starter para continuar usando la API sin límites en este ciclo.'
+                    : `Has usado ${porcentaje.toFixed(0)}% de tus minutos. Actualiza a Starter para tener más capacidad.`}
+                </p>
+                <Link
+                  to="/checkout?plan=starter&period=monthly"
                   className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent no-underline hover:text-accent-hover"
                 >
-                  Ver plan Starter →
+                  {limiteAlcanzado ? 'Subir a Starter →' : 'Ver plan Starter →'}
                 </Link>
               </div>
             )}
@@ -215,6 +231,13 @@ export default function DashboardPage() {
             Usa tu API key en el header <code className="rounded bg-bg px-1">X-API-Key</code> en tus peticiones a la API de Habla. Consulta la{' '}
             <Link to="/documentacion" className="text-accent hover:underline">documentación</Link> para más detalles.
           </p>
+
+          <Link
+            to="/cuenta"
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-semibold text-text-muted transition-colors hover:border-border/80 hover:text-white"
+          >
+            Configuración de cuenta
+          </Link>
         </motion.div>
       </div>
     </div>

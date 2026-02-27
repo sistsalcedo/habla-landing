@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, LogOut, ChevronDown, User } from 'lucide-react'
+import { Menu, X, LogOut, ChevronDown, User, Settings } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import CurrencyToggle from './CurrencyToggle'
@@ -221,6 +221,15 @@ export default function Nav() {
                   >
                     API
                   </Link>
+                  <Link
+                    to="/cuenta"
+                    role="menuitem"
+                    onClick={() => setUserOpen(false)}
+                    className="flex items-center gap-2 px-4 py-2 text-sm text-white no-underline transition-colors hover:bg-border/50"
+                  >
+                    <Settings className="h-4 w-4" />
+                    Cuenta
+                  </Link>
                   <button
                     type="button"
                     role="menuitem"
@@ -365,6 +374,10 @@ export default function Nav() {
                   </Link>
                   <Link to="/documentacion" onClick={() => setMobileOpen(false)} className="rounded-lg border border-border px-4 py-2 text-center font-semibold text-white no-underline">
                     API
+                  </Link>
+                  <Link to="/cuenta" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2 font-semibold text-white no-underline">
+                    <Settings className="h-4 w-4" />
+                    Cuenta
                   </Link>
                   <button
                     onClick={handleSignOut}

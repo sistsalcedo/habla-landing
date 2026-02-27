@@ -59,8 +59,13 @@ export function CurrencyProvider({ children }) {
       if (currency === 'USD') {
         return `${c.symbol}${value.toFixed(2)}/min`
       }
-      const converted = Math.round(value * c.rate)
-      return `${c.symbol}${converted.toLocaleString('es-MX')} ${c.code}/min`
+      const converted = value * c.rate
+      // Para valores < 1 usar 2 decimales; para mayores, redondear a entero
+      const formatted =
+        converted >= 1
+          ? Math.round(converted).toLocaleString('es-MX')
+          : converted.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+      return `${c.symbol}${formatted} ${c.code}/min`
     },
     [currency]
   )
@@ -74,6 +79,16 @@ export function CurrencyProvider({ children }) {
     [currency]
   )
 
+  /** Convierte un precio en moneda seleccionada de vuelta a USD (para Cobrar en Culqi) */
+  const convertToUSD = useCallback(
+    (displayedValue) => {
+      const c = CURRENCIES[currency]
+      if (!c || currency === 'USD') return displayedValue
+      return Number((displayedValue / c.rate).toFixed(2))
+    },
+    [currency]
+  )
+
   const value = useMemo(
     () => ({
       currency,
@@ -81,10 +96,11 @@ export function CurrencyProvider({ children }) {
       formatPrice,
       formatPricePerMin,
       convert,
+      convertToUSD,
       isLocal: currency !== 'USD',
       currentCurrency: CURRENCIES[currency],
     }),
-    [currency, formatPrice, formatPricePerMin, convert]
+    [currency, formatPrice, formatPricePerMin, convert, convertToUSD]
   )
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>

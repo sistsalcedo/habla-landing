@@ -35,8 +35,8 @@ Este proyecto:
 
 ### Implementado (landing)
 
-- **Landing principal**: Hero, Trust signals, Producto (Habla Push REST + Habla Flow WebSocket), Precios, API code block, Testimonios, CTA, Footer.
-- **Rutas**: `/`, `/login`, `/registro`, `/dashboard`, `/documentacion`, `/terminos`, `/privacidad`, `/contacto`.
+- **Landing principal**: Hero, Trust signals, Producto (Habla Push REST + Habla Flow WebSocket), Precios, Calculadora, API code block, Testimonios, CTA, Footer.
+- **Rutas**: `/`, `/login`, `/registro`, `/dashboard`, `/documentacion`, `/terminos`, `/privacidad`, `/contacto`, `/faq`, `/blog`, `/blog/:slug`.
 - **SEO**: Meta tags, Open Graph, Twitter Card, Schema.org, robots.txt, sitemap.xml, favicon.
 - **Marketing**:
   - Newsletter en footer conectada a **Formspree** (si hay `VITE_FORMSPREE_NEWSLETTER_ID`).
@@ -59,13 +59,18 @@ Este proyecto:
   - **Google Analytics 4** listo vía componente `GoogleAnalytics` (solo si `VITE_GA_MEASUREMENT_ID` está definido).
 - **Responsive**: Nav con menú hamburguesa en móvil; secciones adaptadas a desktop/móvil.
 - **Enlaces**: Todos los `href="#"` sustituidos por rutas reales; Nav "Contacto" va a `/contacto`.
+- **Selector de moneda**: USD, MXN, PEN, COP, CLP, ARS, EUR, BOB. Dropdown en Nav, persistencia en `localStorage`. Precios, calculadora y FAQs se actualizan según moneda elegida. Para valores &lt; 1 en moneda local, `formatPricePerMin` muestra decimales.
+- **Ver demo**: Enlace a `VITE_DEMO_URL` (por defecto `https://demo.habla.cloud`). En Hero, Nav (Recursos) y Footer.
+- **Nav UX**: Enlaces agrupados en dropdown "Recursos" (Ver demo, Documentación, API, Casos de uso, Calculadora, Blog, FAQ). Usuario autenticado: avatar + dropdown (Dashboard, API, Salir).
 
 ### Archivos clave
 
 - `index.html` — Meta tags, Schema.org, fuentes, configuración base.
 - `src/App.jsx` — Rutas y layout (Nav + Footer, ruta protegida de Dashboard).
-- `src/pages/` — HomePage, LoginPage, RegistroPage, DashboardPage, DocumentacionPage, TerminosPage, PrivacidadPage, ContactoPage.
-- `src/components/` — Nav, Hero, TrustSignals, ProductCards, PricingCards, CodeBlock, Testimonials, CTASection, Footer, ProtectedRoute, GoogleAnalytics.
+- `src/main.jsx` — CurrencyProvider y AuthProvider.
+- `src/pages/` — HomePage, LoginPage, RegistroPage, DashboardPage, DocumentacionPage, TerminosPage, PrivacidadPage, ContactoPage, FAQPage, BlogPage, BlogPostPage, RecuperarContrasenaPage, ResetearPage.
+- `src/components/` — Nav, Hero, TrustSignals, ProductCards, PricingCards, PricingCalculator, CodeBlock, Testimonials, CTASection, Footer, ProtectedRoute, GoogleAnalytics, CurrencyToggle, UseCasesSection, FAQSection, ComparisonSection.
+- `src/contexts/` — AuthContext, CurrencyContext (monedas, formatPrice, formatPricePerMin).
 - `public/` — favicon.svg, og-image.svg, robots.txt, sitemap.xml.
 - `src/lib/supabase.js` — cliente Supabase (usa `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`, con fallback de placeholder en desarrollo sin `.env`).
 - `src/contexts/AuthContext.jsx` — provider de autenticación (login, registro, Google OAuth, signOut).
@@ -91,10 +96,15 @@ landingpage_S2S/
 │   │   ├── TrustSignals.jsx
 │   │   ├── ProductCards.jsx
 │   │   ├── PricingCards.jsx
+│   │   ├── PricingCalculator.jsx
 │   │   ├── CodeBlock.jsx
+│   │   ├── CurrencyToggle.jsx
 │   │   ├── Testimonials.jsx
 │   │   ├── CTASection.jsx
 │   │   └── Footer.jsx
+│   ├── contexts/
+│   │   ├── AuthContext.jsx
+│   │   └── CurrencyContext.jsx
 │   ├── pages/
 │   │   ├── HomePage.jsx
 │   │   ├── LoginPage.jsx
@@ -128,7 +138,9 @@ landingpage_S2S/
 | `/` | HomePage | Landing completa |
 | `/login` | LoginPage | Formulario login (UI only) |
 | `/registro` | RegistroPage | Formulario registro (UI only) |
-| `/documentacion` | DocumentacionPage | Plantilla API docs |
+| `/documentacion` | DocumentacionPage | Documentación API |
+| `/faq` | FAQPage | Preguntas frecuentes |
+| `/blog` | BlogPage | Blog / artículos |
 | `/terminos` | TerminosPage | Términos de servicio |
 | `/privacidad` | PrivacidadPage | Política de privacidad |
 | `/contacto` | ContactoPage | Formulario contacto (UI only) |
@@ -137,7 +149,7 @@ landingpage_S2S/
 
 ## Navegación
 
-- **Nav**: Logo → `/`; Producto, Precios, API → scroll en home, `/#producto` etc. fuera de home; Contacto → `/contacto` siempre.
+- **Nav**: Logo → `/`; Producto, Precios, Recursos (dropdown: Ver demo, Documentación, API, Casos de uso, Calculadora, Blog, FAQ), Contacto; selector de moneda; usuario (avatar + dropdown) o Iniciar sesión / Prueba gratis.
 - **Footer**: Enlaces internos con `useLocation` para saber si scroll o `Link` a home con hash.
 - **Hash scroll**: HomePage tiene `useEffect` para scroll a `#producto`, `#precios`, etc. cuando la URL incluye hash.
 
@@ -170,6 +182,7 @@ landingpage_S2S/
 - `VITE_SUPABASE_ANON_KEY` — Anon public key. Ver `.env.example`.
 - `VITE_FORMSPREE_NEWSLETTER_ID` — ID de formulario Formspree para Newsletter.
 - `VITE_FORMSPREE_CONTACT_ID` — ID de formulario Formspree para Contacto.
+- `VITE_DEMO_URL` — URL del asistente de voz demo (por defecto `https://demo.habla.cloud`). Usado en "Ver demo".
 - `VITE_GA_MEASUREMENT_ID` — ID de medición GA4 (opcional).
 
 En Vercel: añadir las mismas variables en Project Settings > Environment Variables.
@@ -204,7 +217,7 @@ Tras desplegar en Vercel, en Supabase Auth > URL Configuration:
 Pasos recomendados:
 
 1. Conectar repo de GitHub en [vercel.com](https://vercel.com).
-2. Definir variables de entorno (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_FORMSPREE_*`, `VITE_GA_MEASUREMENT_ID`).
+2. Definir variables de entorno (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_FORMSPREE_*`, `VITE_DEMO_URL`, `VITE_GA_MEASUREMENT_ID`).
 3. Deploy.
 4. Verificar en producción `/login`, `/registro`, `/dashboard`, Newsletter y Contacto.
 
@@ -245,6 +258,8 @@ El backend usa `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` en Railway. Ver `doc
 ### Qué hace la landing (este repo)
 
 - Auth (login/registro) y dashboard con API key y uso.
+- Selector de moneda (USD + 7 monedas LATAM/España). Precios, calculadora y FAQs dinámicos.
+- Enlace "Ver demo" → `https://demo.habla.cloud` (asistente de voz en vivo).
 - Guiar al usuario a la documentación de la API y a los flujos de registro/upgrade.
 - No implementa lógica de billing ni validación de API key; eso vive en el backend.
 

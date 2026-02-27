@@ -17,6 +17,9 @@ import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
 import ResetearPage from './pages/ResetearPage'
+import CheckoutPage from './pages/CheckoutPage'
+import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
+import CuentaPage from './pages/CuentaPage'
 
 export default function App() {
   return (
@@ -39,6 +42,9 @@ export default function App() {
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+          <Route path="/checkout/success" element={<ProtectedRoute><CheckoutSuccessPage /></ProtectedRoute>} />
+          <Route path="/cuenta" element={<ProtectedRoute><CuentaPage /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />

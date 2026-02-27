@@ -74,7 +74,7 @@ Resumen de los cambios implementados según las estrategias de diferenciación f
 | `src/components/Testimonials.jsx` | País en role (México, Colombia, Perú) |
 | `src/components/CTASection.jsx` | "Cancela cuando quieras" |
 | `src/components/Footer.jsx` | Columna Soporte, Casos de uso, copy español/Latam |
-| `src/components/Nav.jsx` | Enlaces FAQ y Casos de uso |
+| `src/components/Nav.jsx` | Enlaces FAQ, Casos de uso; dropdown Recursos; avatar + dropdown usuario |
 | `src/pages/ContactoPage.jsx` | SLA explícito < 24h |
 | `src/pages/HomePage.jsx` | UseCasesSection, ComparisonSection, FAQSection |
 | `src/pages/DocumentacionPage.jsx` | Quick start, errores frecuentes, badge |
@@ -88,13 +88,30 @@ Resumen de los cambios implementados según las estrategias de diferenciación f
 | `src/components/UseCasesSection.jsx` | Casos de uso Latam (6 cards) |
 | `src/components/FAQSection.jsx` | FAQ acordeón en home (4 preguntas) |
 | `src/components/ComparisonSection.jsx` | Tabla Habla vs competencia |
+| `src/components/PricingCalculator.jsx` | Calculadora de costos por minutos (Push/Flow) |
+| `src/components/CurrencyToggle.jsx` | Dropdown de monedas (USD + 7 LATAM/EUR) |
+| `src/contexts/CurrencyContext.jsx` | Provider de moneda, formatPrice, formatPricePerMin |
 | `src/pages/FAQPage.jsx` | Página FAQ completa (8 preguntas) |
+
+---
+
+### 9. Selector de moneda y demo
+
+- [x] **CurrencyContext.jsx**: Soporte USD, MXN, PEN, COP, CLP, ARS, EUR, BOB. `formatPrice`, `formatPricePerMin`, persistencia en `localStorage`.
+- [x] **CurrencyToggle.jsx**: Dropdown en Nav (desktop compacto, móvil completo). Valores &lt; 1 en moneda local muestran decimales (p. ej. S/0.15/min en PEN).
+- [x] **PricingCards, PricingCalculator, FAQPage, FAQSection**: Integrados con `useCurrency()`.
+- [x] **VITE_DEMO_URL**: Variable de entorno. Enlace "Ver demo" en Hero, Nav (Recursos), Footer → `https://demo.habla.cloud`.
+
+### 10. Nav rediseño (UX)
+
+- [x] **Nav.jsx**: Enlaces agrupados en dropdown "Recursos" (Ver demo, Documentación, API, Casos de uso, Calculadora, Blog, FAQ).
+- [x] **Nav.jsx**: Usuario autenticado consolidado en avatar + dropdown (email, Dashboard, API, Salir).
 
 ---
 
 ## Pendiente (no incluido en esta implementación)
 
-- [ ] **Calculadora de costos**: Input minutos → estimación $/mes (solo JS, sin backend)
+- [x] ~~**Calculadora de costos**~~: Implementada `PricingCalculator.jsx`
 - [x] **Dominio**: Usando habla.cloud
 - [ ] **Status page**: Enlace a status.habla.io cuando exista
 - [ ] **Testimonios reales**: Sustituir placeholders por testimonios de clientes reales

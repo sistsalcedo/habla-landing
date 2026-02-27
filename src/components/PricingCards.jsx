@@ -30,6 +30,7 @@ const plans = [
     features: ['Habla Push y Habla Flow incluidos', 'API key incluida', 'Soporte por email'],
     cta: 'Empezar gratis',
     ctaHref: '/registro',
+    planId: null,
     primary: false,
     popular: false,
   },
@@ -38,8 +39,8 @@ const plans = [
     monthly: { price: 29, desc: '500 minutos incluidos' },
     annual: { price: 23, desc: '500 minutos incluidos' },
     features: ['Todo en Hobby', 'Webhooks', 'Documentación prioritaria'],
-    cta: 'Probar 14 días gratis',
-    ctaHref: '/registro',
+    cta: 'Contratar Starter',
+    planId: 'starter',
     primary: true,
     popular: true,
   },
@@ -48,8 +49,8 @@ const plans = [
     monthly: { price: 79, desc: '2.500 minutos incluidos' },
     annual: { price: 63, desc: '2.500 minutos incluidos' },
     features: ['Todo en Starter', 'SLA 99.5%', 'Soporte prioritario'],
-    cta: 'Contactar',
-    ctaHref: '/contacto',
+    cta: 'Contratar Pro',
+    planId: 'pro',
     primary: false,
     popular: false,
   },
@@ -131,7 +132,7 @@ export default function PricingCards() {
                       </li>
                     ))}
                   </ul>
-                  <Link to={plan.ctaHref}>
+                  <Link to={plan.planId ? `/checkout?plan=${plan.planId}&period=${annual ? 'annual' : 'monthly'}` : plan.ctaHref}>
                     <motion.span
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

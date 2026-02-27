@@ -10,13 +10,13 @@ export default function PrivacidadPage() {
         className="mx-auto max-w-3xl"
       >
         <h1 className="mb-8 text-3xl font-bold text-white">Política de Privacidad</h1>
-        <p className="mb-8 text-sm text-text-muted">Última actualización: Febrero 2026</p>
+        <p className="mb-8 text-sm text-text-muted">Última actualización: Febrero 2026 · Aplicable en Perú</p>
 
         <div className="space-y-8 text-text-muted">
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">1. Responsable del tratamiento</h2>
             <p>
-              Habla («nosotros», «nuestro») es el responsable del tratamiento de los datos personales que recopilamos a través de nuestro sitio web (habla.cloud), nuestra API y cualquier otro canal relacionado con la prestación del servicio.
+              Habla («nosotros», «nuestro») es el responsable del tratamiento de los datos personales que recopilamos a través de nuestro sitio web (habla.cloud), nuestra API y cualquier otro canal relacionado con la prestación del servicio, de conformidad con la Ley 29733 — Ley de Protección de Datos Personales del Perú y su Reglamento (D.S. 003-2013-JUS), así como la Directiva de Seguridad de la Información aprobada por la Autoridad Nacional de Protección de Datos Personales (ANPDP).
             </p>
           </section>
 
@@ -42,7 +42,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">4. Base legal</h2>
             <p>
-              El tratamiento se basa en: la ejecución del contrato (cuando utiliza la API o tiene cuenta); su consentimiento (newsletter, cookies no esenciales); nuestro interés legítimo (seguridad, mejora del servicio, comunicaciones comerciales); o el cumplimiento de obligaciones legales.
+              El tratamiento de sus datos personales se basa en: (a) la ejecución del contrato (cuando utiliza la API o tiene cuenta registrada); (b) su consentimiento expreso e informado (newsletter, cookies no esenciales, aceptación de términos al registrarse); (c) nuestro interés legítimo (seguridad, mejora del servicio, prevención de fraudes); o (d) el cumplimiento de obligaciones legales aplicables en Perú. No utilizaremos sus datos para finalidades incompatibles con las indicadas sin su consentimiento previo.
             </p>
           </section>
 
@@ -54,16 +54,16 @@ export default function PrivacidadPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold text-white">6. Conservación</h2>
+            <h2 className="mb-3 text-xl font-semibold text-white">6. Conservación y supresión</h2>
             <p>
-              Conservamos los datos mientras sea necesario para las finalidades indicadas. Los datos de cuenta se mantienen mientras tenga cuenta activa y durante el tiempo requerido legalmente tras la baja. Los logs pueden conservarse durante períodos limitados por razones de seguridad.
+              Conservamos sus datos personales mientras sea necesario para las finalidades indicadas. Los datos de cuenta se mantienen mientras tenga cuenta activa. Al solicitar la eliminación de su cuenta, procederemos a suprimir sus datos personales de forma permanente en un plazo razonable, salvo que la ley peruana exija o permita una conservación más prolongada (por ejemplo, obligaciones contables o fiscales). Los logs pueden conservarse durante períodos limitados por razones de seguridad o cumplimiento normativo.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold text-white">7. Tus derechos</h2>
+            <h2 className="mb-3 text-xl font-semibold text-white">7. Tus derechos (Ley 29733)</h2>
             <p>
-              Puede ejercer los siguientes derechos: acceso a sus datos; rectificación si son inexactos; supresión («derecho al olvido»); limitación del tratamiento; oposición; portabilidad; y a no ser objeto de decisiones automatizadas. Para ejercerlos: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>. También tiene derecho a presentar una reclamación ante la autoridad de protección de datos competente.
+              Conforme a la Ley de Protección de Datos Personales del Perú (Ley 29733), usted tiene derecho a: acceso a sus datos; rectificación si son inexactos o incompletos; supresión cuando resulten innecesarios o haya revocado su consentimiento; oposición al tratamiento en los supuestos previstos por ley; y a no ser objeto de decisiones basadas exclusivamente en tratamiento automatizado que afecten significativamente sus derechos. Para ejercer cualquiera de estos derechos, escríbanos a: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>. Responderemos en el plazo legal aplicable. También puede presentar reclamos ante la Autoridad Nacional de Protección de Datos Personales (www.minjus.gob.pe).
             </p>
           </section>
 
@@ -84,7 +84,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">10. Menores</h2>
             <p>
-              El Servicio no está dirigido a menores de 16 años. No recopilamos conscientemente datos de menores. Si tiene conocimiento de que un menor nos ha facilitado datos, contacte con nosotros para su supresión.
+              El Servicio no está dirigido a menores de edad. No recopilamos conscientemente datos personales de menores. Si un menor nos proporciona datos sin el consentimiento de sus padres o tutores, procederemos a su supresión en cuanto tengamos conocimiento.
             </p>
           </section>
 

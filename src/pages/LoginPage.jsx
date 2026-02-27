@@ -1,10 +1,14 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Lock, ArrowRight } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function LoginPage() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from
+  const returnUrl = from?.pathname ? from.pathname + (from.search || '') : '/'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -17,7 +21,7 @@ export default function LoginPage() {
     setLoading(true)
     try {
       const result = await signIn(email, password)
-      if (result?.session) window.location.replace('/')
+      if (result?.session) navigate(returnUrl, { replace: true })
     } catch (err) {
       const msg = err?.message || 'Error al iniciar sesión'
       if (msg.includes('Invalid login')) setError('Email o contraseña incorrectos.')
@@ -138,7 +142,7 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-text-muted">
           ¿No tienes cuenta?{' '}
-          <Link to="/registro" className="text-accent hover:underline">
+          <Link to="/registro" state={{ from: location.state?.from }} className="text-accent hover:underline">
             Regístrate gratis
           </Link>
         </p>

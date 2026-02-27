@@ -39,7 +39,7 @@ El proyecto es **independiente** del núcleo de la API (backend FastAPI + fronte
 |---------|-------------|
 | 🏠 **Hero** | Headline principal con CTA y animaciones |
 | 📦 **Producto** | Habla Push (REST) y Habla Flow (WebSocket) |
-| 💵 **Precios** | Planes gratuitos y de pago |
+| 💵 **Precios** | Planes con selector de moneda (USD, MXN, PEN, COP, CLP, ARS, EUR, BOB) |
 | 📝 **Código API** | Bloque de ejemplo con sintaxis destacada |
 | 💬 **Testimonios** | Placeholder para casos de éxito |
 | 📱 **Responsive** | Nav con menú hamburguesa en móvil |
@@ -57,6 +57,7 @@ El proyecto es **independiente** del núcleo de la API (backend FastAPI + fronte
 | `/recuperar-contrasena` | Recuperar contraseña |
 | `/resetear` | Nueva contraseña (tras link de email) |
 | `/documentacion` | Documentación de la API |
+| `/faq` | Preguntas frecuentes |
 | `/blog` | Blog (artículos y guías) |
 | `/terminos` | Términos de servicio |
 | `/privacidad` | Política de privacidad |
@@ -194,6 +195,7 @@ Copia `.env.example` a `.env` y completa las variables:
 | `VITE_SUPABASE_ANON_KEY` | Clave anónima de Supabase |
 | `VITE_FORMSPREE_NEWSLETTER_ID` | ID del formulario Formspree para newsletter |
 | `VITE_FORMSPREE_CONTACT_ID` | ID del formulario Formspree para contacto |
+| `VITE_DEMO_URL` | URL del asistente demo (por defecto `https://demo.habla.cloud`). Usado en "Ver demo" |
 | `VITE_GA_MEASUREMENT_ID` | ID de medición de Google Analytics 4 (opcional; descomentar en .env) |
 
 ### Supabase

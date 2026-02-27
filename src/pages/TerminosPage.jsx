@@ -10,7 +10,7 @@ export default function TerminosPage() {
         className="mx-auto max-w-3xl"
       >
         <h1 className="mb-8 text-3xl font-bold text-white">Términos de Servicio</h1>
-        <p className="mb-8 text-sm text-text-muted">Última actualización: Febrero 2026</p>
+        <p className="mb-8 text-sm text-text-muted">Última actualización: Febrero 2026 · Aplicable en Perú</p>
 
         <div className="space-y-8 text-text-muted">
           <section>
@@ -64,7 +64,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-white">7. Limitación de responsabilidad</h2>
             <p>
-              El Servicio se proporciona «tal cual» y «según disponibilidad». En la medida máxima permitida por la ley, Habla no será responsable de daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de usar el Servicio. La responsabilidad total se limitará al importe pagado por usted en los doce meses anteriores al hecho que genere la reclamación.
+              El Servicio se proporciona «tal cual» y «según disponibilidad». En la medida máxima permitida por la ley peruana, Habla no será responsable de daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de usar el Servicio, incluyendo interrupciones, pérdida de datos o fallos en la disponibilidad. La responsabilidad total frente al usuario se limitará al importe efectivamente pagado por usted en los doce meses anteriores al hecho que genere la reclamación. El usuario acepta que el Servicio no constituye garantía de continuidad absoluta ni disponibilidad ininterrumpida.
             </p>
           </section>
 
@@ -76,16 +76,27 @@ export default function TerminosPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold text-white">9. Terminación</h2>
+            <h2 className="mb-3 text-xl font-semibold text-white">9. Terminación y baja</h2>
             <p>
-              Podemos suspender o dar por terminado su acceso al Servicio en caso de incumplimiento de estos términos. Usted puede cancelar su cuenta en cualquier momento desde el panel de control o contactándonos.
+              Nos reservamos el derecho de suspender o dar por terminado su acceso al Servicio en caso de incumplimiento de estos términos, uso indebido o por razones operativas o legales. Usted puede darse de baja en cualquier momento:
+            </p>
+            <ul className="mt-2 list-disc space-y-2 pl-6">
+              <li><strong className="text-white">Bajar a plan Hobby:</strong> Si tiene plan Starter o Pro, puede pasar a Hobby desde la configuración de cuenta. Mantendrá 75 minutos al mes sin cargo.</li>
+              <li><strong className="text-white">Eliminar cuenta:</strong> Puede solicitar la eliminación definitiva de su cuenta y datos desde la sección «Configuración de cuenta». Los datos se eliminarán conforme a nuestra Política de Privacidad y la Ley 29733 (Perú).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold text-white">10. Ley aplicable y jurisdicción</h2>
+            <p>
+              Estos Términos se rigen por las leyes de la República del Perú. Cualquier controversia derivada de los mismos será sometida a los tribunales competentes de Lima, Perú, salvo disposición legal imperativa en contrario.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold text-white">10. Contacto</h2>
+            <h2 className="mb-3 text-xl font-semibold text-white">11. Contacto</h2>
             <p>
-              Para consultas sobre estos términos: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>
+              Para consultas sobre estos términos: <a href="mailto:hola@habla.cloud" className="text-accent hover:underline">hola@habla.cloud</a>. Para reclamos relacionados con derechos del consumidor, puede dirigirse a INDECOPI (www.indecopi.gob.pe).
             </p>
           </section>
         </div>

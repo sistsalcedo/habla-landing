@@ -1,13 +1,18 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Lock, User, ArrowRight, Check } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function RegistroPage() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from
+  const returnUrl = from?.pathname ? from.pathname + (from.search || '') : '/'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [aceptaTerminos, setAceptaTerminos] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [needsConfirmation, setNeedsConfirmation] = useState(false)
@@ -15,6 +20,10 @@ export default function RegistroPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!aceptaTerminos) {
+      setError('Debes aceptar los Términos de Servicio y la Política de Privacidad.')
+      return
+    }
     setError('')
     setNeedsConfirmation(false)
     setLoading(true)
@@ -23,12 +32,9 @@ export default function RegistroPage() {
         data: { full_name: name },
       })
       if (result?.session) {
-        window.location.replace('/')
+        navigate(returnUrl, { replace: true })
       } else if (result?.user) {
         setNeedsConfirmation(true)
-      }
-      if (result?.user) {
-        window.location.replace('/')
       }
     } catch (err) {
       const msg = err?.message || 'Error al crear la cuenta'
@@ -196,12 +202,26 @@ export default function RegistroPage() {
             </div>
           </div>
 
-          <p className="text-xs text-text-muted">
-            Al registrarte aceptas nuestros{' '}
-            <Link to="/terminos" className="text-accent hover:underline">Términos</Link>
-            {' '}y{' '}
-            <Link to="/privacidad" className="text-accent hover:underline">Privacidad</Link>.
-          </p>
+          <label className="flex cursor-pointer items-start gap-3 text-sm text-text-muted">
+            <input
+              type="checkbox"
+              checked={aceptaTerminos}
+              onChange={(e) => setAceptaTerminos(e.target.checked)}
+              className="mt-1 rounded border-border bg-bg-card"
+              required
+            />
+            <span>
+              Acepto los{' '}
+              <Link to="/terminos" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                Términos de Servicio
+              </Link>
+              {' '}y la{' '}
+              <Link to="/privacidad" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                Política de Privacidad
+              </Link>
+              {' '}de Habla.
+            </span>
+          </label>
 
           <button
             type="submit"
