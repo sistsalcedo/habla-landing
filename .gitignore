@@ -16,3 +16,13 @@ dist
 # Logs
 *.log
 npm-debug.log*
+
+# Docs y archivos internos (no públicos en repo)
+SEO-MARKETING.md
+AGENTS.md
+CONFIGURACION-DOMINIO-habla.cloud.md
+IMPLEMENTACION_CHECKLIST.md
+IMPLEMENTADO-LANDING.md
+PRD.md
+PLAN-INGRESOS-HABLA.md
+docs_reference/

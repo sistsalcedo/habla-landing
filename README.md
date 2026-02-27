@@ -144,7 +144,6 @@ landingpage_S2S/
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-├── docs_reference/         # Referencias del proyecto núcleo
 ├── index.html
 ├── vite.config.js
 ├── tailwind.config.js
@@ -210,10 +209,7 @@ Crea dos formularios en [formspree.io](https://formspree.io): uno para newslette
 
 ## 📄 Documentación relacionada
 
-- `AGENTS.md` — Guía para agentes de IA
-- `PRD.md` — Requisitos del producto
-- `SEO-MARKETING.md` — Checklist SEO y marketing
-- `docs_reference/AGENTS_nucleo.md` — Proyecto núcleo (API Habla)
+Consulta la documentación en [habla.cloud](https://habla.cloud) para guías de integración y detalles de la API.
 
 ---
 
